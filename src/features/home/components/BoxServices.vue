@@ -27,6 +27,7 @@ const { wrapperRef, handleTimelineCreated } = useBoxAnimation(emit, {
     else gsap.set(items, { opacity: 1 });
   },
 });
+void wrapperRef;
 
 const SERVICES_EN = [
   { name: "React & Next.js" }, { name: "Vue 3 & Angular" },

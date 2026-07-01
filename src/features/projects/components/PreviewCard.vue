@@ -15,22 +15,19 @@ defineProps<{
 <template>
   <Link
     class="preview-card children-unclickable"
-    :to="`/project/${props.preview.slug}`"
-    :aria-label="t('switch-to-project', { project: props.preview.title })"
+    :to="`/project/${preview.slug}`"
+    :aria-label="t('switch-to-project', { project: preview.title })"
     data-cursor="arrow"
-    data-sound="click"
-    data-hoversound="hover"
-    v-if="props.preview"
+    v-if="preview"
   >
-    <PreviewImage :preview="props.preview" />
-    <PreviewInfo :preview="props.preview" />
+    <PreviewImage :preview="preview" />
+    <PreviewInfo :preview="preview" />
   </Link>
 
   <Link
     v-else
     class="preview-card children-unclickable"
     data-cursor="arrow-external"
-    data-hoversound="hover"
     external
     :href="social[0].url"
   >

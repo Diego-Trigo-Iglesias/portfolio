@@ -21,8 +21,11 @@ import { useHomeContact } from "../composables/useHomeContact";
 const projectsLoaded = ref(false);
 const aboutSpacerRef = ref<HTMLElement | null>(null);
 const { threeCanvasRef, threeInitialized, initScene, destroyScene } = useHomeScene();
+void threeCanvasRef;
 const { introRef, isStickyVisible } = useHomeScroll(projectsLoaded);
+void introRef;
 const { contactRef, contactBottom } = useHomeContact();
+void contactRef;
 
 const handleProjectsLoaded = () => { projectsLoaded.value = true; };
 onMounted(() => initScene());

@@ -13,8 +13,6 @@ import { locale } from "../../i18n/store";
         class="footer-link"
         :external="true"
         data-cursor="circle-white"
-        data-sound="click"
-        data-hoversound="hover"
         >{{ t("privacy") }}</Link
       >
     </Clickable>
@@ -24,8 +22,6 @@ import { locale } from "../../i18n/store";
         class="footer-link children-unclickable"
         :external="true"
         data-cursor="circle-white"
-        data-sound="click"
-        data-hoversound="hover"
         >{{ t("legal") }}</Link
       >
     </Clickable>

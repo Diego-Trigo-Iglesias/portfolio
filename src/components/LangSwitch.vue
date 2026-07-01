@@ -14,8 +14,6 @@ const handleLangSwitch = () => {
     size="sm"
     @click="handleLangSwitch"
     data-cursor="circle-white"
-    data-sound="click"
-    data-hoversound="hover"
     >{{ locale === "es" ? "EN" : "ES" }}</Button
   >
 </template>

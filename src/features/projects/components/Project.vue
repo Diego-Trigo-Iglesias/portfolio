@@ -3,24 +3,31 @@ import { projectId, projectVisible, recentProjectId } from "../../../composables
 import { isTransitioning } from "../../../composables/useProjectTransition";
 import { ref, watch } from "vue";
 import { projectModules } from "../../../content/projects";
-import ProjectContent from "./ProjectContent.vue";
+import ProjectContentComponent from "./ProjectContent.vue";
 import Footer from "../../../components/Footer.vue";
 import { locale } from "../../../i18n/store";
 import { lenis } from "../../../composables/useScroll";
 
 import type { Locale } from "../../../i18n/types";
+import type { ProjectContent } from "../../../content/types";
 
 const loading = ref(true);
-const content = ref(null);
+const content = ref<ProjectContent | null>(null);
 const error = ref<Error | null>(null);
 
-const fetchProject = async (project: string | undefined) => {
+const fetchProject = async (slug: string | undefined) => {
+  if (!slug) return;
+  loading.value = true;
+  error.value = null;
   try {
-    const module = await projectModules[locale.value as Locale][project as string].default;
-    content.value = module;
-    loading.value = false;
+    const projectData = await projectModules[locale.value as Locale][slug]?.default;
+    if (projectData) {
+      content.value = projectData as unknown as ProjectContent;
+    } else {
+      error.value = new Error(`Project ${slug} not found`);
+    }
   } catch (err) {
-    error.value = new Error(`Failed to fetch project ${project}`);
+    error.value = new Error(`Failed to fetch project ${slug}`);
   } finally {
     loading.value = false;
   }
@@ -57,8 +64,12 @@ watch(
     ]"
   >
     <div :class="['project-content-wrapper', projectVisible && `project-content-wrapper-visible`]">
-      <ProjectContent
-        v-if="content && recentProjectId && projectVisible"
+      <div v-if="error" class="project-error">
+        <p>{{ error.message }}</p>
+        <button @click="fetchProject(recentProjectId ?? undefined)">Reintentar</button>
+      </div>
+      <ProjectContentComponent
+        v-else-if="content && recentProjectId && projectVisible"
         :content="content"
         :projectId="recentProjectId"
       />
@@ -103,6 +114,27 @@ watch(
     background: var(--color-accent-400);
     color: var(--color-accent-text-400);
     text-shadow: none;
+  }
+
+  &-error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 2rem;
+    color: var(--color-text-400);
+    text-align: center;
+
+    button {
+      margin-top: 1rem;
+      padding: 0.75rem 2rem;
+      background: var(--color-accent-400);
+      color: var(--color-accent-text-400);
+      border: none;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      font-size: 1rem;
+    }
   }
 }
 </style>

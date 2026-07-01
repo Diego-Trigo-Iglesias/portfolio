@@ -4,14 +4,12 @@ import { useTranslations } from "./i18n/composables/useTranslations";
 import { usePreloader } from "./composables/usePreloader";
 import Cursor from "./components/Cursor.vue";
 import { useAgent } from "./composables/useAgent";
-import { useRouteObserver } from "./composables/useRouteObserver";
+import { projectVisible, useRouteObserver } from "./composables/useRouteObserver";
+import { isTransitioning } from "./composables/useProjectTransition";
 import Home from "./features/home/components/Home.vue";
 import Project from "./features/projects/components/Project.vue";
-import { useProjectTransition } from "./composables/useProjectTransition";
 import { useScroll } from "./composables/useScroll";
-import { projectVisible } from "./composables/useRouteObserver";
 import ProjectBackground from "./features/projects/components/ProjectBackground.vue";
-//const { isTransitioning } = useProjectTransition();
 
 useTranslations();
 usePreloader();

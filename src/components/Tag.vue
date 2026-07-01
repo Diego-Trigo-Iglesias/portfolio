@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from "vue";
-import { tagLabels, type TagVariant } from "./tagVariants";
+import { tagLabels, type TagVariant } from "../types/tagVariants";
 
 const props = defineProps<{
   variant: TagVariant;

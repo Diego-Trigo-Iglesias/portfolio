@@ -1,23 +1,21 @@
 import gsap from "gsap";
-import { BREAKPOINTS } from "../../utils/sizes";
+import { getMatchMediaConditions } from "../../utils/breakpoints";
+
+import type { MatchMediaConditions } from "../../utils/breakpoints";
 
 export const createMatchMedia = (
   setup: (
     context: gsap.Context,
-    conditions: { isMobile: boolean; isDesktop: boolean; isLandscape: boolean },
+    conditions: MatchMediaConditions,
   ) => void | (() => void),
 ): gsap.MatchMedia => {
   const mm = gsap.matchMedia();
 
   mm.add(
-    {
-      isMobile: `(max-width: ${BREAKPOINTS.md - 1}px)`,
-      isDesktop: `(min-width: ${BREAKPOINTS.md}px)`,
-      isLandscape: `(min-aspect-ratio: 1)`,
-    },
+    getMatchMediaConditions(),
     (context) => {
       const { conditions } = context;
-      const cleanup = setup(context, conditions as { isMobile: boolean; isDesktop: boolean; isLandscape: boolean });
+      const cleanup = setup(context, conditions as MatchMediaConditions);
       return cleanup;
     },
   );

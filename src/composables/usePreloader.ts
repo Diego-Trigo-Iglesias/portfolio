@@ -29,6 +29,7 @@ export const usePreloader = () => {
       const preloader = document.querySelector(".preloader") as HTMLElement;
       if (newProgress === 1) {
         gsap.delayedCall(0.2, () => {
+          if (!preloader) return;
           document.body.classList.remove("is-loading");
           preloader.classList.add("preloader-hidden");
           preloaderVisible.value = false;

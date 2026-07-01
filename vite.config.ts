@@ -24,13 +24,18 @@ export default defineConfig({
     outDir: "./dist",
     sourcemap: false,
     emptyOutDir: true,
-    chunkSizeWarningLimit: 1000,
+    chunkSizeWarningLimit: 300,
     rollupOptions: {
       output: {
         inlineDynamicImports: false,
         assetFileNames: "assets/[hash].[ext]",
         entryFileNames: "chunks/[name]-[hash].js",
         chunkFileNames: "chunks/[hash].js",
+        manualChunks(id: string) {
+          if (id.includes("node_modules/three")) return "vendor-three";
+          if (id.includes("node_modules/gsap")) return "vendor-gsap";
+          if (id.includes("node_modules/vue")) return "vendor-vue";
+        },
       },
     },
   },

@@ -1,6 +1,6 @@
-export type EventCallback<T = any> = (data: T) => void;
+export type EventCallback<T = unknown> = (data: T) => void;
 
-export default class EventEmitter<TEvents extends Record<string, any>> {
+export default class EventEmitter<TEvents extends Record<string, unknown>> {
   private events: { [K in keyof TEvents]?: EventCallback<TEvents[K]>[] } = {};
 
   on<K extends keyof TEvents>(event: K, callback: EventCallback<TEvents[K]>): void {
@@ -19,7 +19,7 @@ export default class EventEmitter<TEvents extends Record<string, any>> {
   }
 
   emit<K extends keyof TEvents>(event: K, data?: TEvents[K]): void {
-    this.events[event]?.forEach((cb) => cb(data || ({} as TEvents[K])));
+    this.events[event]?.forEach((cb) => cb(data ?? ({} as TEvents[K])));
   }
 
   off<K extends keyof TEvents>(event: K, callback: EventCallback<TEvents[K]>): void {

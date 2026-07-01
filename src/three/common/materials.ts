@@ -1,48 +1,10 @@
-import { MeshBasicMaterial, ShaderMaterial } from "three";
-import { resources } from "../../utils/resources";
-import shadowVertexShader from "../shaders/shadow-catcher/vertex.glsl";
-import shadowFragmentShader from "../shaders/shadow-catcher/fragment.glsl";
-
+import { MeshBasicMaterial } from "three";
 import type { Material } from "three";
 
-let roomMaterial: Material | null = null;
-let contactMaterial: Material | null = null;
-let shadowMaterial: ShaderMaterial | null = null;
-
-export const getRoomMaterial = (): Material => {
-  if (roomMaterial) return roomMaterial;
-  const texture = resources.items["room-texture"];
-  texture.flipY = false;
-
-  roomMaterial = new MeshBasicMaterial({ map: texture });
-
-  return roomMaterial;
+export const getLogoMaterial = (color = "#0ea5e9"): Material => {
+  return new MeshBasicMaterial({ color });
 };
 
-export const getContactMaterial = (): Material => {
-  if (contactMaterial) return contactMaterial;
-  const texture = resources.items["contact-texture"];
-  texture.flipY = false;
-
-  contactMaterial = new MeshBasicMaterial({ map: texture });
-
-  return contactMaterial;
-};
-
-export const getShadowMaterial = (): ShaderMaterial => {
-  if (shadowMaterial) return shadowMaterial;
-
-  shadowMaterial = new ShaderMaterial({
-    vertexShader: shadowVertexShader,
-    fragmentShader: shadowFragmentShader,
-    depthWrite: false,
-    depthTest: false,
-    uniforms: {
-      uTexture: { value: null },
-      uColorBackground: { value: null },
-      uColorShadow: { value: null },
-    },
-  });
-
-  return shadowMaterial;
+export const getPlainMaterial = (color = "#f8fafc"): Material => {
+  return new MeshBasicMaterial({ color });
 };

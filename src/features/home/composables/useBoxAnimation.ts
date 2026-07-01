@@ -1,6 +1,6 @@
 import { ref, watchEffect, onBeforeUnmount } from "vue";
 import gsap from "gsap";
-import { BREAKPOINTS } from "../../../utils/sizes";
+import { getMatchMediaConditions } from "../../../utils/breakpoints";
 
 interface TimelineItem {
   timeline: gsap.core.Timeline;
@@ -51,14 +51,10 @@ export function useBoxAnimation(
     matchMedia = gsap.matchMedia();
 
     matchMedia.add(
-      {
-        isMobile: `(max-width: ${BREAKPOINTS.md - 1}px)`,
-        isDesktop: `(min-width: ${BREAKPOINTS.md}px)`,
-        isLandscape: `(min-aspect-ratio: 1)`,
-      },
+      getMatchMediaConditions(),
       (context) => {
         const { conditions } = context;
-        const { isMobile, isDesktop, isLandscape } = conditions as BoxAnimationConditions;
+        const { isMobile, isDesktop, isLandscape } = conditions as unknown as BoxAnimationConditions;
 
         const tl = gsap.timeline({ paused: true });
 

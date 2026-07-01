@@ -3,6 +3,7 @@ import { ref, onMounted, onUnmounted } from "vue";
 import { transitions } from "../../../animations";
 import { t } from "../../../i18n/utils/translate";
 import Social from "../../../components/Social.vue";
+import FormattedText from "../../../components/FormattedText.vue";
 
 const contactElement = ref<HTMLElement | null>(null);
 
@@ -20,7 +21,7 @@ onUnmounted(() => {
 <template>
   <div class="contact grid" ref="contactElement">
     <div class="contact-content">
-      <h2 class="contact-title" v-html="t('lets-work-together')"></h2>
+      <h2 class="contact-title"><FormattedText :text="t('lets-work-together')" /></h2>
       <Social variant="background" />
     </div>
   </div>

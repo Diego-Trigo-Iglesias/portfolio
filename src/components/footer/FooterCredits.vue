@@ -18,7 +18,6 @@ const showAttribution = import.meta.env.VITE_SHOW_ATTRIBUTION !== "false";
           class="footer-link children-unclickable"
           external
           data-cursor="circle-white"
-          data-hoversound="hover"
           >David Heckhoff</Link
         >
       </Clickable>

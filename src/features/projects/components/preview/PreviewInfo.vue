@@ -10,10 +10,10 @@ defineProps<{
 
 <template>
   <div class="preview-card-content">
-    <template v-if="props.preview">
+    <template v-if="preview">
       <div class="preview-card-copys">
-        <h3 class="preview-card-title">{{ props.preview.title }}</h3>
-        <p class="preview-card-description">{{ props.preview.description }}</p>
+        <h3 class="preview-card-title">{{ preview.title }}</h3>
+        <p class="preview-card-description">{{ preview.description }}</p>
       </div>
     </template>
     <template v-else>

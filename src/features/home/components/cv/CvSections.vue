@@ -1,21 +1,30 @@
 <script setup lang="ts">
-import { experiences } from "../../../../content/cv/experience";
-import { educationList } from "../../../../content/cv/education";
-import { certifications } from "../../../../content/cv/certifications";
+import { computed } from "vue";
+import { locale } from "../../../../i18n/store";
+import { t } from "../../../../i18n/utils/translate";
+import { experiencesES, experiencesEN } from "../../../../content/cv/experience";
+import { educationListES, educationListEN } from "../../../../content/cv/education";
+import { certificationsES, certificationsEN } from "../../../../content/cv/certifications";
 import ExperienceTimeline from "./ExperienceTimeline.vue";
 import EducationList from "./EducationList.vue";
 import CertificationList from "./CertificationList.vue";
+
+const isES = computed(() => locale.value === "es");
+
+const experiences = computed(() => isES.value ? experiencesES : experiencesEN);
+const educationList = computed(() => isES.value ? educationListES : educationListEN);
+const certifications = computed(() => isES.value ? certificationsES : certificationsEN);
 </script>
 
 <template>
   <section class="cv-sections">
-    <h2 class="cv-title">Experiencia</h2>
+    <h2 class="cv-title">{{ t("experience") }}</h2>
     <ExperienceTimeline :experiences="experiences" />
 
-    <h2 class="cv-title cv-title-spaced">Formación</h2>
+    <h2 class="cv-title cv-title-spaced">{{ t("education") }}</h2>
     <EducationList :items="educationList" />
 
-    <h2 class="cv-title cv-title-spaced">Certificaciones</h2>
+    <h2 class="cv-title cv-title-spaced">{{ t("certifications") }}</h2>
     <CertificationList :items="certifications" />
   </section>
 </template>

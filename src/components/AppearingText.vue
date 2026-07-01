@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, watch, onBeforeUnmount } from "vue";
 import gsap from "gsap";
-import { BREAKPOINTS } from "../utils/sizes";
+import { getMatchMediaConditions } from "../utils/breakpoints";
 
 const props = defineProps<{
   text: string;
@@ -53,10 +53,7 @@ watch(
 
     // Use GSAP matchMedia to handle mobile vs desktop
     matchMedia.add(
-      {
-        isMobile: `(max-width: ${BREAKPOINTS.md - 1}px)`,
-        isDesktop: `(min-width: ${BREAKPOINTS.md}px)`,
-      },
+      getMatchMediaConditions(),
       (context) => {
         const { conditions } = context;
         const { isMobile } = conditions as { isMobile: boolean; isDesktop: boolean };
@@ -130,8 +127,8 @@ onBeforeUnmount(() => {
 
 <template>
   <div class="appearing-text">
-    <p class="appearing-text-value" v-html="displayText"></p>
-    <p class="appearing-text-clone" aria-hidden="true" v-html="props.text"></p>
+    <p class="appearing-text-value">{{ displayText }}</p>
+    <p class="appearing-text-clone" aria-hidden="true">{{ props.text }}</p>
   </div>
 </template>
 

@@ -1,6 +1,6 @@
 import { PerspectiveCamera, Group, Vector3, Object3D } from "three";
 import { threeSizes } from "../utils/sizes";
-import { isTouch } from "../../utils/observer";
+import { isTouchDevice } from "../../utils/device";
 import gsap from "gsap";
 import { scene } from "./scene";
 import { waypoints } from "../../animations/waypoints";
@@ -30,7 +30,7 @@ const init = () => {
   threeSizes.on("resize", resize);
   resize();
 
-  if (!isTouch()) {
+  if (!isTouchDevice()) {
     window.addEventListener("mousemove", handleMouseMove);
   }
 

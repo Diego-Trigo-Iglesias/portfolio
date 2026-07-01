@@ -1,20 +1,14 @@
 <script setup lang="ts">
-import { onMounted, ref, watchEffect } from "vue";
+import { ref, watchEffect } from "vue";
 import { lenis } from "../composables/useScroll";
 import ArrowRight from "./icons/ArrowRight.vue";
 import gsap from "gsap";
 import SwipeUp from "./icons/SwipeUp.vue";
 import { projectId } from "../composables/useRouteObserver";
+import { isTouchDevice } from "../utils/device";
 
 const hasScrolled = ref(false);
-const isTouchDevice = ref(false);
-
-onMounted(() => {
-  isTouchDevice.value =
-    "ontouchstart" in window ||
-    navigator.maxTouchPoints > 0 ||
-    (window.matchMedia && window.matchMedia("(pointer: coarse)").matches);
-});
+const isTouch = isTouchDevice();
 
 const tick = () => {
   if (projectId.value !== null) return;
@@ -36,7 +30,7 @@ watchEffect((onInvalidate) => {
 <template>
   <Transition name="scroll-icon">
     <div v-if="!hasScrolled" class="scroll-icon">
-      <SwipeUp v-if="isTouchDevice" class="scroll-icon-swipe-up" />
+      <SwipeUp v-if="isTouch" class="scroll-icon-swipe-up" />
       <div v-else class="scroll-icon-pointer">
         <div class="scroll-icon-mouse">
           <div class="scroll-icon-mouse-dot"></div>

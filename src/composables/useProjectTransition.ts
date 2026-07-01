@@ -1,8 +1,9 @@
-import { ref, watch } from "vue";
+import { watch } from "vue";
 import { projectId } from "./useRouteObserver";
+import { ROUTE_TRANSITION_DURATION, isTransitioning } from "./routeState";
 
-export const ROUTE_TRANSITION_DURATION = 500;
-export const isTransitioning = ref(false);
+// Re-export to preserve backward compatibility for existing imports
+export { isTransitioning, ROUTE_TRANSITION_DURATION } from "./routeState";
 
 let timeout: ReturnType<typeof setTimeout> | null = null;
 

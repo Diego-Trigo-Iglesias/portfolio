@@ -1,5 +1,5 @@
 import { ref, computed, onMounted, onUnmounted } from "vue";
-import { isTransitioning } from "./useProjectTransition";
+import { isTransitioning } from "./routeState";
 
 // -----------------------------------------------------------------------------
 // GLOBAL REACTIVE PATH
@@ -45,8 +45,7 @@ function patchHistory() {
 
   const wrap = (key: "pushState" | "replaceState") => {
     const original = history[key];
-    history[key] = function (...args) {
-      // @ts-ignore
+    history[key] = function (...args: Parameters<typeof history.pushState>) {
       original.apply(this, args);
 
       // IMPORTANT FIX: delay events to avoid reactivity collisions

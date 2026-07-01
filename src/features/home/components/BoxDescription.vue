@@ -18,6 +18,7 @@ const { wrapperRef, handleTimelineCreated } = useBoxAnimation(emit, {
   animateOn: "desktop",
   timelineDelayOffset: 0.15,
 });
+void wrapperRef;
 </script>
 
 <template>

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed } from "vue";
+import FormattedText from "../../../components/FormattedText.vue";
 
 export interface Props {
   title?: string;
@@ -19,9 +20,9 @@ const classes = computed(() => {
 <template>
   <div :class="classes" v-if="props.title">
     <h3 class="text-title">{{ props.title }}</h3>
-    <p class="text-content" v-html="props.text"></p>
+    <p class="text-content"><FormattedText :text="props.text ?? ''" /></p>
   </div>
-  <p v-else class="text" v-html="props.text"></p>
+  <p v-else class="text"><FormattedText :text="props.text ?? ''" /></p>
 </template>
 
 <style scoped lang="scss">

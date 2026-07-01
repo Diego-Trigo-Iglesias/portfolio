@@ -55,8 +55,6 @@ onMounted(() => {
         @click="onClick('#' + section)"
         :is-dark-theme="dark"
         :aria-label="labels[section]"
-        data-sound="click"
-        data-hoversound="hover"
       >{{ t(section) }}</HeaderLink>
     </div>
   </div>

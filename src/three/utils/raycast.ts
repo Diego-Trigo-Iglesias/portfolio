@@ -11,7 +11,7 @@ const pointer = new Vector2();
 const ndcPointer = new Vector3();
 const ray = new Ray();
 const target = new Vector3();
-const isTouchDevice = "ontouchstart" in window || navigator.maxTouchPoints > 0;
+const isTouch = "ontouchstart" in window || navigator.maxTouchPoints > 0;
 
 const updatePointer = (clientX: number, clientY: number) => {
   // Convert to normalized device coordinates (-1 to 1)
@@ -65,13 +65,13 @@ const handleMouseMove = (event: MouseEvent) => {
 
 const tick = () => {
   // Only perform continuous raycast for non-touch devices
-  if (!isTouchDevice) {
+  if (!isTouch) {
     performRaycast();
   }
 };
 
 const init = () => {
-  if (!isTouchDevice) {
+  if (!isTouch) {
     gsap.ticker.add(tick);
   }
   window.addEventListener("mousemove", handleMouseMove);
@@ -79,7 +79,7 @@ const init = () => {
 };
 
 const destroy = () => {
-  if (!isTouchDevice) {
+  if (!isTouch) {
     gsap.ticker.remove(tick);
   }
   window.removeEventListener("mousemove", handleMouseMove);

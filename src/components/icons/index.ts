@@ -1,0 +1,10 @@
+export { default as ArrowRight } from "./ArrowRight.vue";
+export { default as ArrowRightLong } from "./ArrowRightLong.vue";
+export { default as Github } from "./Github.vue";
+export { default as Instagram } from "./Instagram.vue";
+export { default as Linkedin } from "./Linkedin.vue";
+export { default as Mail } from "./Mail.vue";
+export { default as Pin } from "./Pin.vue";
+export { default as Plus } from "./Plus.vue";
+export { default as SwipeUp } from "./SwipeUp.vue";
+export { default as X } from "./X.vue";

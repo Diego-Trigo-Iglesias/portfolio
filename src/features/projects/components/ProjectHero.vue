@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import Tag from "../../../components/Tag.vue";
 import Button from "../../../components/Button.vue";
+import FormattedText from "../../../components/FormattedText.vue";
 import { t } from "../../../i18n/utils/translate";
 import Link from "../../../components/Link.vue";
 import { projectId } from "../../../composables/useRouteObserver";
@@ -24,13 +25,13 @@ watch(projectId, () => { animationKey.value++; });
         <Tag v-for="tag in content.tags" :key="tag" :variant="tag" />
       </div>
     </div>
-    <p class="project-hero-description" v-html="content.description"></p>
+    <p class="project-hero-description"><FormattedText :text="content.description ?? ''" /></p>
     <div class="project-hero-buttons">
       <Link v-if="content.live" :href="content.live" external class="project-hero-button" data-cursor="arrow-external">
-        <Button renderAs="div" variant="accent" class="children-unclickable" data-hoversound="hover">{{ t("live-view") }}</Button>
+        <Button renderAs="div" variant="accent" class="children-unclickable">{{ t("live-view") }}</Button>
       </Link>
       <Link v-if="content.source" :href="content.source" external class="project-hero-button" data-cursor="arrow-external">
-        <Button renderAs="div" variant="border" class="children-unclickable" data-hoversound="hover">{{ t("source-code") }}</Button>
+        <Button renderAs="div" variant="border" class="children-unclickable">{{ t("source-code") }}</Button>
       </Link>
     </div>
   </div>

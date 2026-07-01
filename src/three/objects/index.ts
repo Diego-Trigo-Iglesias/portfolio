@@ -59,14 +59,14 @@ const init = () => {
   glowLight.position.set(0, 0, 2);
   logoGroup.add(glowLight);
 
-  scene.add(logoGroup);
+  scene.instance.add(logoGroup);
 
   renderer.compile();
 };
 
 const destroy = () => {
   if (logoGroup) {
-    scene.remove(logoGroup);
+    scene.instance.remove(logoGroup);
     logoGroup = null;
   }
 };

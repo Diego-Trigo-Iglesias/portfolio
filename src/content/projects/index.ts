@@ -13,8 +13,11 @@ export const projectIds = [
   "vue-slot-machine",
 ];
 
-function simplifyModules(glob: Record<string, any>) {
-  const result: Record<string, any> = {};
+type ProjectModule = { default: Record<string, string> };
+type GlobResult = Record<string, ProjectModule>;
+
+function simplifyModules(glob: GlobResult): Record<string, ProjectModule> {
+  const result: Record<string, ProjectModule> = {};
   for (const [path, mod] of Object.entries(glob)) {
     const match = path.match(/\/([a-z0-9_-]+)\.ts$/i);
     if (match) result[match[1] as string] = mod;
@@ -22,7 +25,10 @@ function simplifyModules(glob: Record<string, any>) {
   return result;
 }
 
+const esModules = simplifyModules(import.meta.glob("./es/*.ts", { eager: true }) as GlobResult);
+const enModules = simplifyModules(import.meta.glob("./en/*.ts", { eager: true }) as GlobResult);
+
 export const projectModules = {
-  es: simplifyModules(import.meta.glob("./es/*.ts", { eager: true })),
-  en: simplifyModules(import.meta.glob("./en/*.ts", { eager: true })),
-} as const satisfies Record<Locale, Record<string, any>>;
+  es: esModules,
+  en: enModules,
+} as const satisfies Record<Locale, Record<string, ProjectModule>>;

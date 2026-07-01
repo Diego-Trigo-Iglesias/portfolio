@@ -1,7 +1,9 @@
 import { compileTemplate } from "./template";
 import { translations } from "../store";
 
-export const t = (key: string, props: { [key: string]: any } = {}) => {
+type TranslateProps = Record<string, string | number | boolean | null>;
+
+export const t = (key: string, props: TranslateProps = {}) => {
   const translation = translations.value[key];
   if (!translation) return "";
 

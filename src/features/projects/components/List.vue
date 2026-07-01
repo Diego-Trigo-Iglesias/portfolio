@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed } from "vue";
+import FormattedText from "../../../components/FormattedText.vue";
 
 export interface Props {
   title?: string;
@@ -18,7 +19,7 @@ const classes = computed(() => {
   <div :class="classes">
     <h3 v-if="props.title" class="list-title">{{ props.title }}</h3>
     <ul class="list-items">
-      <li v-for="item in props.items" :key="item" class="list-item" v-html="item"></li>
+      <li v-for="item in props.items" :key="item" class="list-item"><FormattedText :text="item" /></li>
     </ul>
   </div>
 </template>

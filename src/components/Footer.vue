@@ -29,9 +29,8 @@ const { withSocial = true } = defineProps<Props>();
         @click="handleBackToTop"
         @keydown.enter="handleBackToTop"
         data-cursor="circle-white"
-        data-sound="click"
       >
-        <ButtonRound renderAs="div" variant="border" class="children-unclickable" data-hoversound="hover">
+        <ButtonRound renderAs="div" variant="border" class="children-unclickable">
           <ArrowRightLong class="footer-back-to-top-icon" />
         </ButtonRound>
       </div>
