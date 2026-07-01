@@ -1,12 +1,11 @@
 <script setup lang="ts">
-import { computed, ref, onMounted, watchEffect } from "vue";
+import { ref, watchEffect } from "vue";
 import gsap from "gsap";
 import Notch from "../../../components/Notch.vue";
 
-const wrapperRef = ref<HTMLDivElement | null>(null);
-const mediaRef = ref<HTMLVideoElement | HTMLImageElement | null>(null);
-const mediaContentRef = ref<HTMLDivElement | null>(null);
-const isMounted = ref(false);
+const el = ref<HTMLDivElement | null>(null);
+const media = ref<HTMLVideoElement | HTMLImageElement | null>(null);
+const content = ref<HTMLDivElement | null>(null);
 
 export interface Props {
   type: "image" | "video";
@@ -18,63 +17,31 @@ export interface Props {
 
 const props = defineProps<Props>();
 
-const wrapperClasses = computed(() => {
-  return {
-    "project-media": true,
-  };
-});
-
-watchEffect(async (onInvalidate) => {
-  if (!wrapperRef.value) {
-    return;
-  }
-
+watchEffect((onInvalidate) => {
+  if (!el.value) return;
   const tl = gsap.timeline({
     scrollTrigger: {
-      trigger: wrapperRef.value,
+      trigger: el.value,
       start: "top bottom",
       end: "bottom bottom",
       toggleActions: "play none none reset",
     },
   });
-  tl.fromTo(mediaContentRef.value, { scale: 0.8 }, { scale: 1, duration: 0.4, ease: "power1.out" }, 0);
-  tl.fromTo(mediaRef.value, { scale: 1.2 }, { scale: 1, duration: 0.4, ease: "power1.out" }, 0);
-
+  tl.fromTo(content.value, { scale: 0.8 }, { scale: 1, duration: 0.4, ease: "power1.out" }, 0);
+  tl.fromTo(media.value, { scale: 1.2 }, { scale: 1, duration: 0.4, ease: "power1.out" }, 0);
   onInvalidate(() => {
     tl.kill();
-    gsap.set(mediaContentRef.value, { scale: 1 });
-    gsap.set(mediaRef.value, { scale: 1 });
+    gsap.set(content.value, { scale: 1 });
+    gsap.set(media.value, { scale: 1 });
   });
-});
-
-onMounted(async () => {
-  isMounted.value = true;
 });
 </script>
 
 <template>
-  <div :class="wrapperClasses" ref="wrapperRef">
-    <div class="project-media-content" ref="mediaContentRef">
-      <img
-        v-if="props.type === 'image'"
-        :src="props.src"
-        :alt="props.alt"
-        loading="lazy"
-        fetchpriority="high"
-        class="project-media-image"
-        ref="mediaRef"
-      />
-      <video
-        v-else
-        :src="props.src"
-        autoplay
-        muted
-        loop
-        playsinline
-        preload="metadata"
-        class="project-media-video"
-        ref="mediaRef"
-      >
+  <div class="project-media" ref="el">
+    <div class="project-media-content" ref="content">
+      <img v-if="props.type === 'image'" :src="props.src" :alt="props.alt" loading="lazy" fetchpriority="high" class="project-media-image" ref="media" />
+      <video v-else :src="props.src" autoplay muted loop playsinline preload="metadata" class="project-media-video" ref="media">
         <source :src="props.src" type="video/mp4" />
       </video>
     </div>
@@ -95,13 +62,21 @@ onMounted(async () => {
   justify-self: center;
   position: relative;
   aspect-ratio: 16 / 9;
+  @include mixins.mq("md") { grid-column: 2 / 12; }
+  @include mixins.mq("lg") { grid-column: 3 / 11; }
 
-  @include mixins.mq("md") {
-    grid-column: 2 / 12;
+  &-content {
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+    background-color: var(--color-background-300);
+    width: 100%;
+    height: 100%;
   }
 
-  @include mixins.mq("lg") {
-    grid-column: 3 / 11;
+  &-image, &-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 
   &-caption {
@@ -111,25 +86,15 @@ onMounted(async () => {
     background-color: var(--color-background-400);
     padding: var(--space-xxs) var(--space-sm);
     border-radius: var(--radius-md) 0 0 0;
-
-    @include mixins.mq("md") {
-      padding: var(--space-xxs) var(--space-sm);
-    }
-
-    @include mixins.mq("lg") {
-      padding: var(--space-xs) var(--space-md);
-      border-radius: var(--radius-lg) 0 0 0;
-    }
+    @include mixins.mq("md") { padding: var(--space-xxs) var(--space-sm); }
+    @include mixins.mq("lg") { padding: var(--space-xs) var(--space-md); border-radius: var(--radius-lg) 0 0 0; }
 
     &-notch {
       position: absolute;
       color: var(--color-background-400);
       --icon-color: var(--color-background-400);
       width: var(--radius-md);
-
-      @include mixins.mq("md") {
-        width: var(--radius-lg);
-      }
+      @include mixins.mq("md") { width: var(--radius-lg); }
 
       &-left {
         left: 0;
@@ -147,31 +112,8 @@ onMounted(async () => {
     &-copy {
       font-size: var(--font-size-sm);
       font-weight: 700;
-
-      @include mixins.mq("md") {
-        font-size: var(--font-size-md);
-      }
+      @include mixins.mq("md") { font-size: var(--font-size-md); }
     }
-  }
-
-  &-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  &-video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  &-content {
-    overflow: hidden;
-    border-radius: var(--radius-lg);
-    background-color: var(--color-background-300);
-    width: 100%;
-    height: 100%;
   }
 }
 </style>
