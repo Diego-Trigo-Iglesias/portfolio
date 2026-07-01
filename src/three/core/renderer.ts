@@ -60,51 +60,44 @@ const tick = () => {
   instance.render(scene.instance, camera.instance);
 };
 
-const compile = async () => {
-  await Promise.all([compileScene(camera.instance, scene.instance), compileScene(camera.instance, renderTarget.scene)]);
+const compile = () => {
+  compileScene(camera.instance, scene.instance);
+  compileScene(camera.instance, renderTarget.scene);
 };
 
 const setIsActive = (value: boolean) => {
   isActive = value;
 };
 
-const compileScene = async (camera: Camera, sceneToCompile: Scene) => {
+const compileScene = (camera: Camera, sceneToCompile: Scene) => {
   if (!instance) {
     console.error("Renderer not initialized");
     return;
   }
 
-  return new Promise<void>(async (resolve) => {
-    if (!instance) {
-      return;
+  const invisibleObjects: Object3D[] = [];
+  const instancedWithOriginalCullState: [Object3D, boolean][] = [];
+
+  sceneToCompile.traverse((child) => {
+    if (child.visible === false) {
+      invisibleObjects.push(child);
+      child.visible = true;
     }
 
-    const invisibleObjects: Object3D[] = [];
-    const instancedWithOriginalCullState: [Object3D, boolean][] = [];
-
-    sceneToCompile.traverse((child) => {
-      if (child.visible === false) {
-        invisibleObjects.push(child);
-        child.visible = true;
-      }
-
-      if (child.frustumCulled === true) {
-        instancedWithOriginalCullState.push([child, child.frustumCulled]);
-        child.frustumCulled = false; // Ensure it's rendered
-      }
-    });
-
-    instance.compile(sceneToCompile, camera);
-
-    invisibleObjects.forEach((child) => (child.visible = false));
-    instancedWithOriginalCullState.forEach(([child, originalState]) => {
-      child.frustumCulled = originalState;
-    });
-
-    renderTarget.render();
-
-    resolve();
+    if (child.frustumCulled === true) {
+      instancedWithOriginalCullState.push([child, child.frustumCulled]);
+      child.frustumCulled = false; // Ensure it's rendered
+    }
   });
+
+  instance.compile(sceneToCompile, camera);
+
+  invisibleObjects.forEach((child) => (child.visible = false));
+  instancedWithOriginalCullState.forEach(([child, originalState]) => {
+    child.frustumCulled = originalState;
+  });
+
+  renderTarget.render();
 };
 
 const destroy = () => {
