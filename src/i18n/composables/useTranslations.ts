@@ -23,6 +23,7 @@ export const useTranslations = () => {
   watch(locale, () => {
     if (!locale.value) return;
     window.localStorage.setItem("portfolio-locale", locale.value);
+    document.documentElement.lang = locale.value;
   });
 
   watch(
