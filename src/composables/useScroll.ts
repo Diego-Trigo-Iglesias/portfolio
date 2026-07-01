@@ -18,7 +18,9 @@ export const useScroll = () => {
     if (!instance) return;
 
     if (instance.isScrolling === "smooth" && Math.abs(instance.velocity) > 0) {
-      velocity.value = Math.min(Math.abs(instance.velocity * 0.75) || 0, 1);
+      velocity.value = Math.min(Math.abs(instance.velocity * 0.75), 1);
+    } else {
+      velocity.value = 0;
     }
 
     instance.raf(time * 1000);
@@ -56,5 +58,10 @@ export const useScroll = () => {
 
   onUnmounted(() => {
     gsap.ticker.remove(tick);
+    if (lenis.value) {
+      lenis.value.off("scroll", handleScroll);
+      lenis.value.destroy();
+      lenis.value = null;
+    }
   });
 };
