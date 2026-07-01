@@ -3,7 +3,7 @@ import Header from "./components/Header.vue";
 import { useTranslations } from "./i18n/composables/useTranslations";
 import { usePreloader } from "./composables/usePreloader";
 import { projectVisible, useRouteObserver } from "./composables/useRouteObserver";
-import { isTransitioning } from "./composables/useProjectTransition";
+import { isTransitioning, useProjectTransition } from "./composables/useProjectTransition";
 import Home from "./features/home/components/Home.vue";
 import Project from "./features/projects/components/Project.vue";
 import { useScroll } from "./composables/useScroll";
@@ -13,6 +13,7 @@ useTranslations();
 usePreloader();
 useScroll();
 useRouteObserver();
+useProjectTransition();
 </script>
 
 <template>
