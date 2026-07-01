@@ -47,7 +47,16 @@ onUnmounted(() => {
     <div class="preview-card-top" ref="wrapperRef">
       <div class="preview-card-image-wrapper">
         <div class="preview-card-image-container">
-          <img :src="props.preview.thumbnail" :alt="props.preview.title" class="preview-card-image" ref="imageRef" />
+          <img
+            v-if="props.preview.thumbnail"
+            :src="props.preview.thumbnail"
+            :alt="props.preview.title"
+            class="preview-card-image"
+            ref="imageRef"
+          />
+          <div v-else class="preview-card-placeholder" ref="imageRef">
+            <span class="preview-card-placeholder-text">{{ props.preview.title }}</span>
+          </div>
         </div>
       </div>
       <div class="preview-card-overlay">
@@ -129,6 +138,24 @@ onUnmounted(() => {
       border-radius: var(--radius-lg);
       overflow: hidden;
       background-color: var(--color-beige-500);
+    }
+  }
+
+  &-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-coral) 100%);
+
+    &-text {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #ffffff;
+      text-align: center;
+      padding: 0.5rem;
+      opacity: 0.9;
     }
   }
 
