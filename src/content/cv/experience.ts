@@ -23,11 +23,11 @@ export const experiencesES: Experience[] = [
     role: "Full-Stack Developer",
     period: "Nov 2024 — Jun 2025",
     description: [
-      "Desarrollo de aplicaciones web con TypeScript, Vue.js y Angular para el sector sanitario.",
+      "Desarrollo de aplicaciones web con Vue.js, TypeScript y Spring Boot para el sector sanitario.",
       "APIs RESTful y microservicios con Node.js y Spring Boot.",
       "Bases de datos SQL y NoSQL, despliegue en entornos cloud.",
     ],
-    technologies: ["Vue.js", "Angular", "TypeScript", "Node.js", "PostgreSQL", "Docker"],
+    technologies: ["Vue.js", "TypeScript", "Node.js", "Spring Boot", "PostgreSQL"],
   },
   {
     company: "Corunet / Inditex",
@@ -80,11 +80,11 @@ export const experiencesEN: Experience[] = [
     role: "Full-Stack Developer",
     period: "Nov 2024 — Jun 2025",
     description: [
-      "Web applications with TypeScript, Vue.js and Angular for the healthcare sector.",
+      "Web applications with Vue.js, TypeScript and Spring Boot for the healthcare sector.",
       "RESTful APIs and microservices with Node.js and Spring Boot.",
       "SQL and NoSQL databases, cloud deployments.",
     ],
-    technologies: ["Vue.js", "Angular", "TypeScript", "Node.js", "PostgreSQL", "Docker"],
+    technologies: ["Vue.js", "TypeScript", "Node.js", "Spring Boot", "PostgreSQL"],
   },
   {
     company: "Corunet / Inditex",
