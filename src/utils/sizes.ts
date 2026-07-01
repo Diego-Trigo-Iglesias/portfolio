@@ -26,6 +26,7 @@ class Sizes extends EventEmitter<{
   aspectRatio: number;
   isLandscape: boolean;
   resizeObserver: ResizeObserver | null;
+  private boundVisibilityChange: () => void;
 
   constructor() {
     super();
@@ -37,6 +38,7 @@ class Sizes extends EventEmitter<{
     this.visible = true;
     this.isLandscape = false;
     this.resizeObserver = null;
+    this.boundVisibilityChange = this.visibilityChange.bind(this);
 
     this.resize();
     this.init();
@@ -51,7 +53,7 @@ class Sizes extends EventEmitter<{
     // Observe the document element for size changes
     this.resizeObserver.observe(document.documentElement);
 
-    window.addEventListener("visibilitychange", this.visibilityChange.bind(this));
+    window.addEventListener("visibilitychange", this.boundVisibilityChange);
     this.resize();
   }
 
@@ -102,7 +104,7 @@ class Sizes extends EventEmitter<{
       this.resizeObserver.disconnect();
       this.resizeObserver = null;
     }
-    window.removeEventListener("visibilitychange", this.visibilityChange.bind(this));
+    window.removeEventListener("visibilitychange", this.boundVisibilityChange);
   }
 }
 
