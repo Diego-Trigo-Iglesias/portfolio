@@ -12,22 +12,22 @@ export const experiencesES: Experience[] = [
     role: "Full-Stack Developer + IoT",
     period: "Jul 2025 — Presente",
     description: [
-      "App web full-stack con React, TypeScript y Node.js para gestion inteligente de alimentacion en piscifactorias.",
+      "App web full-stack con Vue.js, React, TypeScript y Node.js para gestion inteligente de alimentacion en piscifactorias.",
       "Dashboard con visualizacion de datos en tiempo real y metricas de rendimiento productivo.",
       "Integracion de sensores IoT y sistemas de alimentacion automatizada via API REST.",
     ],
-    technologies: ["React", "TypeScript", "Node.js", "MongoDB", "Docker", "IoT"],
+    technologies: ["Vue.js", "React", "TypeScript", "Node.js", "MongoDB", "Docker", "IoT"],
   },
   {
     company: "Bahia Software",
     role: "Full-Stack Developer",
     period: "Nov 2024 — Jun 2025",
     description: [
-      "Desarrollo de aplicaciones web con TypeScript, React y Angular para el sector sanitario.",
+      "Desarrollo de aplicaciones web con TypeScript, Vue.js y Angular para el sector sanitario.",
       "APIs RESTful y microservicios con Node.js y Spring Boot.",
       "Bases de datos SQL y NoSQL, despliegue en entornos cloud.",
     ],
-    technologies: ["Angular", "React", "TypeScript", "Node.js", "PostgreSQL", "Docker"],
+    technologies: ["Vue.js", "Angular", "TypeScript", "Node.js", "PostgreSQL", "Docker"],
   },
   {
     company: "Corunet / Inditex",
@@ -45,11 +45,11 @@ export const experiencesES: Experience[] = [
     role: "Full-Stack Developer",
     period: "Sep 2020 — Sep 2021",
     description: [
-      "Aplicaciones web para el sector bancario con Vue.js, TypeScript y Java Spring Boot.",
+      "Aplicaciones web para el sector bancario con Java Spring Boot en el backend.",
       "Implementacion de pruebas automatizadas, pipelines CI/CD y despliegue continuo.",
       "Migraciones tecnologicas y refactoring de sistemas legacy.",
     ],
-    technologies: ["Vue.js", "TypeScript", "Java", "Spring Boot", "PostgreSQL", "Jenkins"],
+    technologies: ["Java", "Spring Boot", "PostgreSQL", "Jenkins", "Git"],
   },
   {
     company: "Coremain",
@@ -69,22 +69,22 @@ export const experiencesEN: Experience[] = [
     role: "Full-Stack Developer + IoT",
     period: "Jul 2025 — Present",
     description: [
-      "Full-stack web app with React, TypeScript and Node.js for smart aquaculture feeding management.",
+      "Full-stack web app with Vue.js, React, TypeScript and Node.js for smart aquaculture feeding management.",
       "Real-time data visualization dashboard with productive performance metrics.",
       "IoT sensor integration and automated feeding systems via REST API.",
     ],
-    technologies: ["React", "TypeScript", "Node.js", "MongoDB", "Docker", "IoT"],
+    technologies: ["Vue.js", "React", "TypeScript", "Node.js", "MongoDB", "Docker", "IoT"],
   },
   {
     company: "Bahia Software",
     role: "Full-Stack Developer",
     period: "Nov 2024 — Jun 2025",
     description: [
-      "Web applications with TypeScript, React and Angular for the healthcare sector.",
+      "Web applications with TypeScript, Vue.js and Angular for the healthcare sector.",
       "RESTful APIs and microservices with Node.js and Spring Boot.",
       "SQL and NoSQL databases, cloud deployments.",
     ],
-    technologies: ["Angular", "React", "TypeScript", "Node.js", "PostgreSQL", "Docker"],
+    technologies: ["Vue.js", "Angular", "TypeScript", "Node.js", "PostgreSQL", "Docker"],
   },
   {
     company: "Corunet / Inditex",
@@ -102,11 +102,11 @@ export const experiencesEN: Experience[] = [
     role: "Full-Stack Developer",
     period: "Sep 2020 — Sep 2021",
     description: [
-      "Web applications for the banking sector with Vue.js, TypeScript and Java Spring Boot.",
+      "Web applications for the banking sector with Java Spring Boot on the backend.",
       "Automated testing, CI/CD pipelines and continuous deployment.",
       "Technology migrations and legacy system refactoring.",
     ],
-    technologies: ["Vue.js", "TypeScript", "Java", "Spring Boot", "PostgreSQL", "Jenkins"],
+    technologies: ["Java", "Spring Boot", "PostgreSQL", "Jenkins", "Git"],
   },
   {
     company: "Coremain",
