@@ -1,26 +1,18 @@
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
-import glsl from "vite-plugin-glsl";
 
 export default defineConfig({
   base: "/portfolio/",
-  plugins: [
-    vue(),
-    glsl({
-      include: ["**/*.glsl", "**/*.vert", "**/*.frag"],
-      defaultExtension: "glsl",
-      warnDuplicatedImports: false,
-    }),
-  ],
+  plugins: [vue()],
   server: {
     port: 3000,
     strictPort: true,
     host: true,
   },
   resolve: {
-    extensions: [".js", ".jsx", ".ts", ".tsx", ".json", ".ogg", ".wav", ".glsl", ".ktx2"],
+    extensions: [".js", ".jsx", ".ts", ".tsx", ".json"],
   },
-  assetsInclude: ["**/*.svg", "**/*.gltf", "**/*.glb", "**/*.png", "**/*.jpg", "**/*.ktx2"],
+  assetsInclude: ["**/*.svg", "**/*.png", "**/*.jpg", "**/*.webp"],
   css: {
     preprocessorOptions: {
       scss: {

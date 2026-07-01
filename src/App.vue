@@ -4,8 +4,6 @@ import { useTranslations } from "./i18n/composables/useTranslations";
 import { usePreloader } from "./composables/usePreloader";
 import Cursor from "./components/Cursor.vue";
 import { useAgent } from "./composables/useAgent";
-import { useMusic } from "./features/sounds/composables/useMusic";
-import { useHowler } from "./features/sounds/composables/useHowler";
 import { useRouteObserver } from "./composables/useRouteObserver";
 import Home from "./features/home/components/Home.vue";
 import Project from "./features/projects/components/Project.vue";
@@ -13,19 +11,12 @@ import { useProjectTransition } from "./composables/useProjectTransition";
 import { useScroll } from "./composables/useScroll";
 import { projectVisible } from "./composables/useRouteObserver";
 import ProjectBackground from "./features/projects/components/ProjectBackground.vue";
-import { useClickSound } from "./features/sounds/composables/useClickSounds";
-//import { useHoverSound } from "./features/sounds/composables/useHoverSounds";
-
-const { isTransitioning } = useProjectTransition();
+//const { isTransitioning } = useProjectTransition();
 
 useTranslations();
 usePreloader();
-useMusic();
-useHowler();
 useScroll();
 useRouteObserver();
-useClickSound();
-//useHoverSound();
 const { isTouch } = useAgent();
 </script>
 
@@ -82,3 +73,4 @@ const { isTouch } = useAgent();
   overflow: hidden; /* ensure no scroll container */
 }
 </style>
+
