@@ -1,36 +1,53 @@
 :root {
-  --color-text-400: #1e293b;
-  --color-text-300: #475569;
+  /* Pastel palette */
+  --color-pink: #f27e98;
+  --color-coral: #fd998e;
+  --color-peach: #ffc9a7;
+  --color-cream: #fff7d2;
+  --color-warm-white: #ffffef;
 
-  --color-grayscale-500: rgb(148, 163, 184);
-  --color-grayscale-400: rgb(203, 213, 225);
+  /* Text */
+  --color-text-400: #3d2c2e;
+  --color-text-300: #6b4e51;
 
-  --color-beige-700: rgb(30, 41, 59);
-  --color-beige-600: rgb(51, 65, 85);
-  --color-beige-500: rgb(71, 85, 105);
-  --color-beige-400: #f1f5f9;
+  /* Accent / interactive */
+  --color-accent-400: var(--color-pink);
+  --color-accent-text-400: #ffffff;
 
-  --color-background-400: #f8fafc;
+  /* Backgrounds */
+  --color-background-400: var(--color-warm-white);
+  --color-background-300: #fff3e0;
 
-  --color-black-400: #0f172a;
+  /* Grays */
+  --color-grayscale-500: #c4a99c;
+  --color-grayscale-400: #e8d5c8;
 
-  --color-gray-500: #64748b;
-  --color-gray-400: #94a3b8;
+  /* Beige tones (3D scene) */
+  --color-beige-700: #2c1f1d;
+  --color-beige-600: #3d2c2e;
+  --color-beige-500: #6b4e51;
+  --color-beige-400: var(--color-cream);
 
-  --color-orange-400: #ea580c;
+  --color-dark: #2c1f1d;
+
+  --color-gray-500: #8c7a75;
+  --color-gray-400: #b8a59e;
+
+  --color-orange-400: var(--color-coral);
 
   --color-white-400: #ffffff;
 
-  --color-cyan-500: #0ea5e9;
-  --color-cyan-400: rgb(56, 189, 248);
+  /* Cyan → coral (keeping variable names for compat) */
+  --color-cyan-500: var(--color-coral);
+  --color-cyan-400: var(--color-peach);
 
-  --color-text-cyan-400: #e0f2fe;
-  --color-text-cyan-300: #7dd3fc;
+  --color-text-cyan-400: #fff5f0;
+  --color-text-cyan-300: var(--color-peach);
 
-  --color-dark-blue-600: #1d4ed8;
-  --color-dark-blue-500: #1e40af;
-  --color-dark-blue-400: #1e3a8a;
+  --color-dark-blue-600: #e8898f;
+  --color-dark-blue-500: #f0979b;
+  --color-dark-blue-400: #f27e98;
 
-  --color-hologram-top: rgb(30, 64, 175);
-  --color-hologram-bottom: rgba(30, 58, 138, 0.6);
+  --color-hologram-top: var(--color-pink);
+  --color-hologram-bottom: rgba(242, 126, 152, 0.5);
 }

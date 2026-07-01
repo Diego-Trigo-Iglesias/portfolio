@@ -9,13 +9,16 @@ const showAttribution = import.meta.env.VITE_SHOW_ATTRIBUTION !== "false";
 <template>
   <div class="footer-credits">
     <div v-if="showAttribution" class="footer-credits-built">
-      <p>
-        {{ t("original-concept-by") }}
-      </p>
+      <p>{{ t("original-concept-by") }}</p>
       <Clickable renderAs="div">
-        <Link href="https://david-hckh.com" class="footer-link children-unclickable" external data-cursor="circle-white"
-          >David Heckhoff</Link
+        <Link
+          href="https://david-hckh.com"
+          class="footer-link children-unclickable"
+          external
+          data-cursor="circle-white"
         >
+          David Heckhoff
+        </Link>
       </Clickable>
     </div>
     <p>&copy; {{ new Date().getFullYear() }} Diego Trigo Iglesias</p>
