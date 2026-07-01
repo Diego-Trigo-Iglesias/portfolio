@@ -11,14 +11,20 @@ Available in Spanish and English.
 
 ## Stack
 
-| Technology                  | Usage                        |
-| --------------------------- | ---------------------------- |
-| **Vue 3** + Composition API | Frontend framework           |
-| **TypeScript**              | Static typing (strict mode)  |
-| **Vite**                    | Build tool                   |
-| **Three.js**                | 3D scene (DT logo)           |
-| **GSAP** + **Lenis**        | Animations and smooth scroll |
-| **SCSS**                    | Styles with mixins           |
+| Category       | Technology                                        |
+| -------------- | ------------------------------------------------- |
+| **Framework**  | Vue 3 (Composition API + `<script setup>`)        |
+| **Language**   | TypeScript (strict mode, `noUnusedLocals`)        |
+| **Build**      | Vite 7                                            |
+| **3D**         | Three.js (WebGL, GLTF, matcaps, render targets)   |
+| **Animation**  | GSAP (ScrollTrigger, ticker-driven parallax)      |
+| **Scroll**     | Lenis (smooth scrolling)                          |
+| **Styles**     | SCSS (mixins, variables, responsive grid)         |
+| **Routing**    | Custom pushState router (no vue-router)           |
+| **i18n**       | Lazy-loaded JSON namespaces (ES/EN)               |
+| **CI/CD**      | GitHub Actions → GitHub Pages                     |
+| **Formatting** | Prettier                                          |
+| **Type Check** | vue-tsc                                            |
 
 ## Scripts
 
