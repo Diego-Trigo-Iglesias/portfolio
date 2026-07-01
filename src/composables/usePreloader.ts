@@ -8,7 +8,14 @@ export const usePreloader = () => {
   const progress = ref(0);
   const resourcesProgress = ref(0);
 
+  /** Cached DOM references to avoid querying every frame. */
+  let preloaderRect: HTMLElement | null = null;
+  let preloaderEl: HTMLElement | null = null;
+
   onMounted(() => {
+    preloaderRect = document.querySelector(".preloader-rect") as HTMLElement;
+    preloaderEl = document.querySelector(".preloader") as HTMLElement;
+
     resources.on("progress", (newProgress) => {
       resourcesProgress.value = newProgress;
     });
@@ -30,18 +37,16 @@ export const usePreloader = () => {
   watch(
     progress,
     (newProgress) => {
-      const rect = document.querySelector(".preloader-rect") as HTMLElement;
-      const preloader = document.querySelector(".preloader") as HTMLElement;
       if (newProgress === 1) {
         gsap.delayedCall(0.2, () => {
-          if (!preloader) return;
+          if (!preloaderEl) return;
           document.body.classList.remove("is-loading");
-          preloader.classList.add("preloader-hidden");
+          preloaderEl.classList.add("preloader-hidden");
           preloaderVisible.value = false;
         });
       }
 
-      if (rect) rect.style.transform = `scaleY(${newProgress})`;
+      if (preloaderRect) preloaderRect.style.transform = `scaleY(${newProgress})`;
     },
     { immediate: true },
   );
