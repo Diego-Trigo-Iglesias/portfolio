@@ -2,8 +2,6 @@
 import Header from "./components/Header.vue";
 import { useTranslations } from "./i18n/composables/useTranslations";
 import { usePreloader } from "./composables/usePreloader";
-import Cursor from "./components/Cursor.vue";
-import { useAgent } from "./composables/useAgent";
 import { projectVisible, useRouteObserver } from "./composables/useRouteObserver";
 import { isTransitioning } from "./composables/useProjectTransition";
 import Home from "./features/home/components/Home.vue";
@@ -15,7 +13,6 @@ useTranslations();
 usePreloader();
 useScroll();
 useRouteObserver();
-const { isTouch } = useAgent();
 </script>
 
 <template>
@@ -39,8 +36,6 @@ const { isTouch } = useAgent();
       <Project />
     </div>
   </div>
-
-  <Cursor v-if="!isTouch" />
 </template>
 
 <style lang="scss">
