@@ -5,7 +5,7 @@
 Personal portfolio of **Diego Trigo Iglesias**, Full-Stack Developer from Moana, Galicia.  
 Available in Spanish and English.
 
-**Web**: https://diegotrigoiglesias.github.io/portfolio/
+**Web**: https://diego-trigo-iglesias.github.io/portfolio/
 
 ---
 
