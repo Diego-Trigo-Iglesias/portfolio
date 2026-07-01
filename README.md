@@ -1,43 +1,74 @@
-# Portfolio (2025)
+# Portfolio — Diego Trigo Iglesias
 
-Personal portfolio site: project case studies, lightweight 3D and shader demos, bilingual copy (English and German).
+[![Deploy](https://github.com/Diego-Trigo-Iglesias/portfolio/actions/workflows/deploy.yml/badge.svg)](https://github.com/Diego-Trigo-Iglesias/portfolio/actions/workflows/deploy.yml)
 
-Built with **Vue 3**, **TypeScript**, and **Vite**. Motion via **GSAP** and **Lenis**, 3D via **three.js**, audio via **Howler**. GLSL is compiled through **vite-plugin-glsl**.
+Portfolio personal de **Diego Trigo Iglesias**, desarrollador Full-Stack de Moaña, Galicia.  
+Disponible en español e inglés.
+
+🌐 **Web**: https://diegotrigoiglesias.github.io/portfolio/
+
+---
+
+## Stack
+
+| Tecnología | Uso |
+|------------|-----|
+| **Vue 3** + Composition API | Framework principal |
+| **TypeScript** | Tipado estático |
+| **Vite** | Build tool |
+| **Three.js** | Escena 3D (logo DT) |
+| **GSAP** + **Lenis** | Animaciones y scroll |
+| **SCSS** | Estilos con mixins |
 
 ## Scripts
 
-| Command        | Description                          |
-| -------------- | ------------------------------------ |
-| `npm run dev`   | Dev server on port **3000** (`strictPort`) |
-| `npm run build` | `vue-tsc` then production bundle to `dist/` |
-| `npm run preview` | Serve the production build locally |
-| `npm run typecheck` | Typecheck only (`vue-tsc -b`) |
+| Comando | Descripción |
+|---------|-------------|
+| `npm run dev` | Servidor dev en puerto 3000 |
+| `npm run build` | Typecheck + build a `dist/` |
+| `npm run preview` | Vista previa del build |
+| `npm run typecheck` | Solo typecheck |
 
-## Content
+## Estructura
 
-- **Projects**: `src/content/projects/{en,de}/<slug>.ts` — copy, tags, media, links. Slugs must align with `projectIds` in `src/content/projects/index.ts`.
-- **Previews / listing**: `src/content/projects/previews/`.
-- **Tags**: variants and labels live in `src/components/tagVariants.ts` (used by `Tag.vue` and content types).
+```
+src/
+├── components/       # Componentes reutilizables
+├── features/         # Feature modules (home, projects)
+│   ├── home/         # Secciones del homepage
+│   └── projects/     # Vista de proyecto individual
+├── animations/       # Sistema de animaciones y transiciones
+├── three/            # Escena 3D (core, objetos, utils)
+├── i18n/             # Traducciones ES/EN
+├── content/          # Datos de proyectos
+├── composables/      # Lógica compartida (hooks)
+└── assets/           # Estilos e imágenes
+```
 
-## Stack (high level)
+## Proyectos
 
-- Vue 3 (`<script setup>`), SCSS with shared mixins (`src/assets/styles/`)
-- i18n helpers under `src/i18n/`
-- WebGL / GLSL under `src/three/` where applicable
+10 proyectos showcase con stack variado:
+- **Motor-RPG.net** — RPG Java + Spring Boot
+- **Coin Finder** — Criptomonedas React + Firebase
+- **Task Manager** — Vue + Pinia + IndexedDB
+- **IoT Sensor Simulator** — Node-RED + MQTT + ESP32
+- **React + K8s Demo** — React + Docker + K8s
+- **Mi Chatbot** — IA + NLP + chatbot interactivo
+- **Star Wars App** — Angular + SWAPI
+- **Fake Netflix** — Angular 19 + API REST
+- **CR Chapela Web** — React + Firebase
+- **Vue Slot Machine** — Vue + Vite + slot mechanics
 
-## Credits & Attribution
+## Atribución
 
-This project was created and designed by David Heckhoff.
+Este proyecto está inspirado en el portfolio de **David Heckhoff** ([david-hckh.com](https://david-hckh.com)),  
+cuyo código original sirvió como base arquitectónica.  
+Se ha realizado una transformación sustancial: branding, contenido, escena 3D, proyectos, y más del 80% del código.
 
-If you use this project or substantial parts of its source code as a base for your own portfolio or work, attribution must be preserved.
+> Concepto original por [David Heckhoff](https://david-hckh.com)
 
-Please keep:
+## Licencia
 
-- existing credit comments in the source code
-- this attribution section in the README
-- a visible reference to the original project/repository in derivative works
-
-Original portfolio:
--> https://david-hckh.com
-
-Commercial reuse or redistribution of substantial portions of this project without permission is prohibited.
+Proyecto privado. Código original © David Heckhoff.  
+Transformaciones y contenido original © Diego Trigo Iglesias.
+Uso personal y educativo.
