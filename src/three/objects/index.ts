@@ -1,48 +1,66 @@
 import * as THREE from "three";
+import gsap from "gsap";
 import { scene } from "../core/scene";
 import { renderer } from "../core/renderer";
 
 let logoGroup: THREE.Group | null = null;
+let ticker: (() => void) | null = null;
 
 const init = () => {
-  // Create a simple DT logo using basic geometries
   logoGroup = new THREE.Group();
 
-  // "D" letter - a cylinder with half cut (using TorusGeometry + BoxGeometry as a simplified D)
+  // --- Shared material config ---
+  const dMaterial = new THREE.MeshPhysicalMaterial({
+    color: 0x0ea5e9,
+    metalness: 0.8,
+    roughness: 0.15,
+    emissive: 0x0ea5e9,
+    emissiveIntensity: 0.15,
+    clearcoat: 0.3,
+    clearcoatRoughness: 0.25,
+  });
+
+  const tMaterial = new THREE.MeshPhysicalMaterial({
+    color: 0x3b82f6,
+    metalness: 0.8,
+    roughness: 0.15,
+    emissive: 0x3b82f6,
+    emissiveIntensity: 0.15,
+    clearcoat: 0.3,
+    clearcoatRoughness: 0.25,
+  });
+
+  // --- Letter D ---
   const dShape = new THREE.Group();
 
-  // D vertical bar
   const dBar = new THREE.Mesh(
     new THREE.BoxGeometry(0.3, 2, 0.3),
-    new THREE.MeshPhysicalMaterial({ color: 0x0ea5e9, metalness: 0.6, roughness: 0.2 }),
+    dMaterial,
   );
   dBar.position.x = -0.5;
   dShape.add(dBar);
 
-  // D curve (half torus)
   const dCurve = new THREE.Mesh(
     new THREE.TorusGeometry(0.5, 0.15, 16, 32, Math.PI),
-    new THREE.MeshPhysicalMaterial({ color: 0x0ea5e9, metalness: 0.6, roughness: 0.2 }),
+    dMaterial,
   );
   dCurve.rotation.z = Math.PI / 2;
   dCurve.position.x = 0.25;
   dShape.add(dCurve);
 
-  // "T" letter
+  // --- Letter T ---
   const tShape = new THREE.Group();
 
-  // T top bar
   const tTop = new THREE.Mesh(
     new THREE.BoxGeometry(1.2, 0.3, 0.3),
-    new THREE.MeshPhysicalMaterial({ color: 0x3b82f6, metalness: 0.6, roughness: 0.2 }),
+    tMaterial,
   );
   tTop.position.y = 0.85;
   tShape.add(tTop);
 
-  // T vertical bar
   const tBar = new THREE.Mesh(
     new THREE.BoxGeometry(0.3, 2, 0.3),
-    new THREE.MeshPhysicalMaterial({ color: 0x3b82f6, metalness: 0.6, roughness: 0.2 }),
+    tMaterial,
   );
   tBar.position.x = 0.15;
   tShape.add(tBar);
@@ -54,17 +72,49 @@ const init = () => {
   logoGroup.add(dShape);
   logoGroup.add(tShape);
 
-  // Add a subtle glow effect with a point light
-  const glowLight = new THREE.PointLight(0x0ea5e9, 1, 5);
+  // --- Lighting ---
+  const glowLight = new THREE.PointLight(0x0ea5e9, 2, 6);
   glowLight.position.set(0, 0, 2);
   logoGroup.add(glowLight);
 
+  // Subtle ambient fill
+  const ambientLight = new THREE.AmbientLight(0x404060, 0.5);
+  logoGroup.add(ambientLight);
+
+  // Key light for depth
+  const keyLight = new THREE.DirectionalLight(0xffffff, 0.8);
+  keyLight.position.set(5, 5, 5);
+  logoGroup.add(keyLight);
+
+  // Back light for rim effect
+  const backLight = new THREE.DirectionalLight(0x0ea5e9, 0.4);
+  backLight.position.set(-3, 0, -5);
+  logoGroup.add(backLight);
+
   scene.instance.add(logoGroup);
+
+  // --- Animation loop (smooth rotation + floating) ---
+  let time = 0;
+  ticker = () => {
+    time += 0.01;
+    if (!logoGroup) return;
+
+    // Smooth Y-axis rotation
+    logoGroup.rotation.y += 0.005;
+
+    // Gentle floating (bobbing)
+    logoGroup.position.y = Math.sin(time) * 0.15;
+  };
+  gsap.ticker.add(ticker);
 
   renderer.compile();
 };
 
 const destroy = () => {
+  if (ticker) {
+    gsap.ticker.remove(ticker);
+    ticker = null;
+  }
   if (logoGroup) {
     scene.instance.remove(logoGroup);
     logoGroup = null;
