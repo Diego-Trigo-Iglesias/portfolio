@@ -2,6 +2,7 @@ import gsap from "gsap";
 import { Ray, Vector2, Vector3 } from "three";
 import { camera } from "../core/camera";
 import { threeSizes } from "./sizes";
+import { isTouchDevice } from "../../utils/device";
 
 import type { ClickableBox3 } from "../types";
 
@@ -11,7 +12,7 @@ const pointer = new Vector2();
 const ndcPointer = new Vector3();
 const ray = new Ray();
 const target = new Vector3();
-const isTouch = "ontouchstart" in window || navigator.maxTouchPoints > 0;
+const isTouch = isTouchDevice();
 
 const updatePointer = (clientX: number, clientY: number) => {
   // Convert to normalized device coordinates (-1 to 1)
