@@ -7,4 +7,5 @@ export const colors = {
   coral: new Color("#fd998e"),
   peach: new Color("#ffc9a7"),
   cream: new Color("#fff7d2"),
+  skyBlue: new Color("#0169b4"),
 };
