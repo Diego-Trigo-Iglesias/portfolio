@@ -39,6 +39,14 @@ class Resources extends EventEmitter<{
   startLoading() {
     if (this.isReady) return;
 
+    // No resources to load -> emit ready immediately
+    if (this.toLoad === 0) {
+      this.isReady = true;
+      this.emit("progress", 1);
+      this.emit("ready");
+      return;
+    }
+
     for (const source of sources) {
       if (source.type === "gltfModel") {
         this.loaders.gltfLoader.load(source.path, (file) => {

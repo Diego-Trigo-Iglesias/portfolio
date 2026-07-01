@@ -12,6 +12,11 @@ export const usePreloader = () => {
     resources.on("progress", (newProgress) => {
       resourcesProgress.value = newProgress;
     });
+
+    // If resources already loaded (empty sources), skip straight to 100%
+    if (resources.isReady) {
+      resourcesProgress.value = 1;
+    }
   });
 
   watch(
