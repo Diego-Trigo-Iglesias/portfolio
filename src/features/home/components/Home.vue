@@ -6,6 +6,7 @@ import About from "./About.vue";
 import Projects from "./Projects.vue";
 import Contact from "./Contact.vue";
 import Footer from "../../../components/Footer.vue";
+import CvSections from "./cv/CvSections.vue";
 import { ref, onMounted, onUnmounted, watchEffect, computed, watch } from "vue";
 import { three } from "../../../three";
 import { animations } from "../../../animations";
@@ -157,6 +158,7 @@ watch(
         <div class="intro-wrapper-spacer"></div>
         <div class="about-spacer" ref="aboutSpacerRef" id="about"></div>
       </div>
+      <CvSections />
       <Projects id="projects" @loaded="handleProjectsLoaded" />
       <div ref="contactRef" class="home-contact">
         <Contact id="contact" v-if="projectsLoaded" />
