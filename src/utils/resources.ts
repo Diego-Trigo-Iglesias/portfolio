@@ -49,14 +49,30 @@ class Resources extends EventEmitter<{
 
     for (const source of sources) {
       if (source.type === "gltfModel") {
-        this.loaders.gltfLoader.load(source.path, (file) => {
-          this.sourceLoaded(source, file);
-        });
+        this.loaders.gltfLoader.load(
+          source.path,
+          (file) => {
+            this.sourceLoaded(source, file);
+          },
+          undefined,
+          (error) => {
+            this.log(`Failed to load ${source.path}: ${JSON.stringify(error)}`);
+            this.sourceLoaded(source, null as unknown as ResourceType);
+          },
+        );
       } else if (source.type === "texture") {
-        this.loaders.textureLoader.load(source.path, (file: Texture) => {
-          file.colorSpace = SRGBColorSpace;
-          this.sourceLoaded(source, file);
-        });
+        this.loaders.textureLoader.load(
+          source.path,
+          (file: Texture) => {
+            file.colorSpace = SRGBColorSpace;
+            this.sourceLoaded(source, file);
+          },
+          undefined,
+          (error) => {
+            this.log(`Failed to load ${source.path}: ${JSON.stringify(error)}`);
+            this.sourceLoaded(source, null as unknown as ResourceType);
+          },
+        );
       }
     }
   }
