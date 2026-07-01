@@ -55,39 +55,79 @@ void wrapperRef;
   width: calc(100% - var(--space-outer) * 2);
   left: var(--space-outer);
   @include mixins.landscape {
-    position: relative; left: 0; bottom: 0;
-    width: 480px; max-width: calc(var(--svw) * 38);
+    position: relative;
+    left: 0;
+    bottom: 0;
+    width: 480px;
+    max-width: calc(var(--svw) * 38);
     transform: translate(-100%, -50%);
-    padding-top: 3px; padding-right: var(--line-length);
+    padding-top: 3px;
+    padding-right: var(--line-length);
   }
-  @include mixins.landscape-large { width: 410px; max-width: calc(var(--svw) * 32); }
+  @include mixins.landscape-large {
+    width: 410px;
+    max-width: calc(var(--svw) * 32);
+  }
   &-line {
-    width: 100%; height: 1px;
+    width: 100%;
+    height: 1px;
     background-color: var(--color-cyan-400);
-    @include mixins.landscape { display: none; }
+    @include mixins.landscape {
+      display: none;
+    }
   }
   &-details {
     padding: var(--space-sm) var(--space-md);
-    display: flex; align-items: center; justify-content: space-between;
-    @include mixins.landscape { display: none; }
-    &-name { font-size: var(--font-size-title-xs); font-weight: 700; }
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    @include mixins.landscape {
+      display: none;
+    }
+    &-name {
+      font-size: var(--font-size-title-xs);
+      font-weight: 700;
+    }
     &-location {
-      display: flex; align-items: center; gap: var(--space-xs);
-      &-icon { width: var(--icon-size-xs); --icon-color: var(--color-white-400); transform: translateY(-1px); }
-      &-copy { font-size: var(--font-size-md); }
+      display: flex;
+      align-items: center;
+      gap: var(--space-xs);
+      &-icon {
+        width: var(--icon-size-xs);
+        --icon-color: var(--color-white-400);
+        transform: translateY(-1px);
+      }
+      &-copy {
+        font-size: var(--font-size-md);
+      }
     }
   }
-  &::after, &::before { display: none; @include mixins.landscape { display: block; } }
+  &::after,
+  &::before {
+    display: none;
+    @include mixins.landscape {
+      display: block;
+    }
+  }
   &::after {
     content: "";
-    position: absolute; top: 50%; transform: translateY(-50%); right: 0;
-    width: 11px; height: 11px;
-    background-color: var(--color-cyan-400); border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0;
+    width: 11px;
+    height: 11px;
+    background-color: var(--color-cyan-400);
+    border-radius: 50%;
   }
   &::before {
     content: "";
-    position: absolute; top: 50%; transform: translateY(-50%); right: 0;
-    width: var(--line-length); height: 0;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0;
+    width: var(--line-length);
+    height: 0;
     border-top: var(--stroke-sm) solid var(--color-cyan-400);
   }
   &-content {
@@ -96,15 +136,22 @@ void wrapperRef;
     background: linear-gradient(to bottom, var(--color-hologram-top) 0%, var(--color-hologram-bottom) 100%);
     @include mixins.landscape {
       padding: var(--space-xs) var(--space-sm);
-      @include mixins.mq("md") { padding: var(--space-sm) var(--space-md); }
+      @include mixins.mq("md") {
+        padding: var(--space-sm) var(--space-md);
+      }
     }
   }
   &-copy {
     will-change: opacity;
     font-size: var(--font-size-md);
     padding: var(--space-sm) var(--space-md);
-    @include mixins.landscape { padding: 0; font-size: var(--font-size-sm); }
-    @include mixins.landscape-large { font-size: var(--font-size-lg); }
+    @include mixins.landscape {
+      padding: 0;
+      font-size: var(--font-size-sm);
+    }
+    @include mixins.landscape-large {
+      font-size: var(--font-size-lg);
+    }
   }
 }
 </style>

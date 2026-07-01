@@ -12,7 +12,9 @@ const { content } = defineProps<{ content: ProjectContent }>();
 
 const animationKey = ref(0);
 
-watch(projectId, () => { animationKey.value++; });
+watch(projectId, () => {
+  animationKey.value++;
+});
 </script>
 
 <template>
@@ -30,7 +32,13 @@ watch(projectId, () => { animationKey.value++; });
       <Link v-if="content.live" :href="content.live" external class="project-hero-button" data-cursor="arrow-external">
         <Button renderAs="div" variant="accent" class="children-unclickable">{{ t("live-view") }}</Button>
       </Link>
-      <Link v-if="content.source" :href="content.source" external class="project-hero-button" data-cursor="arrow-external">
+      <Link
+        v-if="content.source"
+        :href="content.source"
+        external
+        class="project-hero-button"
+        data-cursor="arrow-external"
+      >
         <Button renderAs="div" variant="border" class="children-unclickable">{{ t("source-code") }}</Button>
       </Link>
     </div>
@@ -42,9 +50,16 @@ watch(projectId, () => { animationKey.value++; });
   padding: 0 var(--space-outer);
   padding-bottom: 48px;
   padding-top: calc(var(--height-header) + 24px);
-  @include mixins.mq("md") { padding-bottom: 64px; }
+  @include mixins.mq("md") {
+    padding-bottom: 64px;
+  }
 
-  &-button { flex: 0.5; @include mixins.mq("md") { width: fit-content; } }
+  &-button {
+    flex: 0.5;
+    @include mixins.mq("md") {
+      width: fit-content;
+    }
+  }
 
   &-buttons {
     grid-row: 3;
@@ -55,8 +70,16 @@ watch(projectId, () => { animationKey.value++; });
     gap: var(--space-sm);
     margin-top: var(--space-md);
     width: 100%;
-    @include mixins.mq("md") { gap: var(--space-md); width: fit-content; grid-column: 1 / 6; grid-row: 2; margin-top: 0; }
-    @include mixins.mq("lg") { grid-column: 2 / 6; }
+    @include mixins.mq("md") {
+      gap: var(--space-md);
+      width: fit-content;
+      grid-column: 1 / 6;
+      grid-row: 2;
+      margin-top: 0;
+    }
+    @include mixins.mq("lg") {
+      grid-column: 2 / 6;
+    }
   }
 
   &-tags {
@@ -71,14 +94,22 @@ watch(projectId, () => { animationKey.value++; });
     line-height: var(--line-height-title);
     transform: translateY(0%);
     animation: project-hero-title-visible 0.5s var(--ease-smooth);
-    @include mixins.mq("md") { font-size: var(--font-size-title-xl); }
-
-    @keyframes project-hero-title-visible {
-      from { transform: translateY(100%); }
-      to { transform: translateY(0); }
+    @include mixins.mq("md") {
+      font-size: var(--font-size-title-xl);
     }
 
-    &-wrapper { overflow: hidden; }
+    @keyframes project-hero-title-visible {
+      from {
+        transform: translateY(100%);
+      }
+      to {
+        transform: translateY(0);
+      }
+    }
+
+    &-wrapper {
+      overflow: hidden;
+    }
   }
 
   &-description {
@@ -86,9 +117,18 @@ watch(projectId, () => { animationKey.value++; });
     line-height: var(--line-height-copy);
     grid-column: 1 / 13;
     align-self: center;
-    @include mixins.mq("md") { grid-row: 1; grid-column: 6 / 12; }
-    @include mixins.mq("lg") { grid-row: 1; grid-column: 7 / 12; }
-    @include mixins.mq("xl") { grid-row: 1; grid-column: 7 / 11; }
+    @include mixins.mq("md") {
+      grid-row: 1;
+      grid-column: 6 / 12;
+    }
+    @include mixins.mq("lg") {
+      grid-row: 1;
+      grid-column: 7 / 12;
+    }
+    @include mixins.mq("xl") {
+      grid-row: 1;
+      grid-column: 7 / 11;
+    }
   }
 
   &-top {
@@ -98,8 +138,12 @@ watch(projectId, () => { animationKey.value++; });
     grid-row: 1;
     align-self: top;
     grid-column: 1 / 13;
-    @include mixins.mq("md") { grid-column: 1 / 6; }
-    @include mixins.mq("lg") { grid-column: 2 / 6; }
+    @include mixins.mq("md") {
+      grid-column: 1 / 6;
+    }
+    @include mixins.mq("lg") {
+      grid-column: 2 / 6;
+    }
   }
 }
 </style>

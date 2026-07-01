@@ -6,7 +6,9 @@ export const compileTemplate = (template = ""): ((variables: TemplateVars) => st
 
   return (variables) => {
     return parts
-      .map((part) => (part.startsWith("{") && part.endsWith("}") ? (String(variables[part.slice(1, -1)] ?? part) ?? part) : part))
+      .map((part) =>
+        part.startsWith("{") && part.endsWith("}") ? (String(variables[part.slice(1, -1)] ?? part) ?? part) : part,
+      )
       .join("");
   };
 };

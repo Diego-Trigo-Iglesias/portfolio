@@ -12,20 +12,39 @@ const { scrolledPastHeroVisible, handleBackToTop, handleBackClick, classNames, g
 <template>
   <header :class="classNames">
     <div class="header-left">
-      <ButtonRound v-if="projectId !== null" variant="accent" @click="handleBackClick"
-        :aria-label="t('back-to-home')" :class="{'header-back': true, 'header-back-isProjectPage': projectId !== null}"
-        data-cursor="circle-white">
+      <ButtonRound
+        v-if="projectId !== null"
+        variant="accent"
+        @click="handleBackClick"
+        :aria-label="t('back-to-home')"
+        :class="{ 'header-back': true, 'header-back-isProjectPage': projectId !== null }"
+        data-cursor="circle-white"
+      >
         <ArrowRight class="header-back-icon" />
       </ButtonRound>
     </div>
-    <div :class="{'header-logo': true, 'header-logo-isProjectPage': projectId !== null, 'header-logo-clickable': scrolledPastHeroVisible, 'children-unclickable': true}"
-      @click="handleBackToTop" data-cursor="circle-white">
+    <div
+      :class="{
+        'header-logo': true,
+        'header-logo-isProjectPage': projectId !== null,
+        'header-logo-clickable': scrolledPastHeroVisible,
+        'children-unclickable': true,
+      }"
+      @click="handleBackToTop"
+      data-cursor="circle-white"
+    >
       <Logo class="header-logo-image" />
     </div>
     <div class="header-right">
-      <Button renderAs="a" variant="accent" :aria-label="t('get-in-touch')"
-        :href="social.find((item) => item.name === 'mail')?.url ?? ''" external
-        :class="getInTouchClassNames" data-cursor="circle-white">
+      <Button
+        renderAs="a"
+        variant="accent"
+        :aria-label="t('get-in-touch')"
+        :href="social.find((item) => item.name === 'mail')?.url ?? ''"
+        external
+        :class="getInTouchClassNames"
+        data-cursor="circle-white"
+      >
         {{ t("get-in-touch") }}
       </Button>
     </div>

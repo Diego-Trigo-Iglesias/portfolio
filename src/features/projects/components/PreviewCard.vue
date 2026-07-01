@@ -24,13 +24,7 @@ defineProps<{
     <PreviewInfo :preview="preview" />
   </Link>
 
-  <Link
-    v-else
-    class="preview-card children-unclickable"
-    data-cursor="arrow-external"
-    external
-    :href="social[0].url"
-  >
+  <Link v-else class="preview-card children-unclickable" data-cursor="arrow-external" external :href="social[0].url">
     <PreviewImage />
     <PreviewInfo />
   </Link>

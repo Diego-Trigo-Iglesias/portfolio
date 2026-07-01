@@ -12,7 +12,10 @@ const TYPES: Cursor[] = ["circle-black", "arrow", "arrow-external", "circle-whit
 
 const wrapper = ref<HTMLElement | null>(null);
 const scaleEl = ref<HTMLElement | null>(null);
-const mx = ref(0), my = ref(0), cx = ref(0), cy = ref(0);
+const mx = ref(0),
+  my = ref(0),
+  cx = ref(0),
+  cy = ref(0);
 const visible = ref(false);
 const type = ref<Cursor | null>(null);
 const detected = ref<Cursor | null>(null);
@@ -22,10 +25,18 @@ const tick = () => {
   cy.value = lerp(cy.value, my.value, 0.1);
   const hoveringBox = raycast.getHoveringBox();
   if (hoveringBox) {
-    if (!visible.value) { visible.value = true; cx.value = mx.value; cy.value = my.value; }
+    if (!visible.value) {
+      visible.value = true;
+      cx.value = mx.value;
+      cy.value = my.value;
+    }
     type.value = "circle-black";
   } else if (detected.value) {
-    if (!visible.value) { visible.value = true; cx.value = mx.value; cy.value = my.value; }
+    if (!visible.value) {
+      visible.value = true;
+      cx.value = mx.value;
+      cy.value = my.value;
+    }
     type.value = detected.value;
   } else {
     visible.value = false;
@@ -56,7 +67,13 @@ onMounted(() => {
   gsap.ticker.add(tick);
 });
 
-watch(() => path.value, () => { visible.value = false; type.value = null; });
+watch(
+  () => path.value,
+  () => {
+    visible.value = false;
+    type.value = null;
+  },
+);
 
 onUnmounted(() => {
   window.removeEventListener("mousemove", onMove);
@@ -82,12 +99,15 @@ onUnmounted(() => {
 <style scoped lang="scss">
 .cursor-wrapper {
   position: fixed;
-  top: 0; left: 0;
+  top: 0;
+  left: 0;
   pointer-events: none;
   z-index: 9999;
   will-change: transform;
   display: none;
-  @include mixins.hover { display: block; }
+  @include mixins.hover {
+    display: block;
+  }
 }
 
 .cursor-scale {
@@ -99,30 +119,47 @@ onUnmounted(() => {
 
 .cursor {
   position: absolute;
-  top: 0; left: 0;
+  top: 0;
+  left: 0;
   transform: translate(-50%, -50%);
   opacity: 0;
   transition: opacity 0.1s ease-in-out;
-  &-active { opacity: 1; }
-  &-circle-black, &-circle-white {
-    width: 26px; height: 26px; border-radius: 50%;
+  &-active {
+    opacity: 1;
   }
-  &-circle-black { border: 4px solid var(--color-text-400); }
-  &-circle-white { border: 4px solid var(--color-white-400); }
-  &-arrow, &-arrow-external {
-    width: 54px; height: 54px;
+  &-circle-black,
+  &-circle-white {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+  }
+  &-circle-black {
+    border: 4px solid var(--color-text-400);
+  }
+  &-circle-white {
+    border: 4px solid var(--color-white-400);
+  }
+  &-arrow,
+  &-arrow-external {
+    width: 54px;
+    height: 54px;
     background-color: var(--color-accent-400, var(--color-orange-400));
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background-color 0.1s ease-in-out, opacity 0.1s ease-in-out;
+    transition:
+      background-color 0.1s ease-in-out,
+      opacity 0.1s ease-in-out;
   }
-  &-arrow-icon, &-arrow-external-icon {
+  &-arrow-icon,
+  &-arrow-external-icon {
     color: var(--color-accent-text-400, var(--color-white-400));
     --icon-color: var(--color-accent-text-400, var(--color-white-400));
     width: 24px;
   }
-  &-arrow-external-icon { transform: rotate(-45deg); }
+  &-arrow-external-icon {
+    transform: rotate(-45deg);
+  }
 }
 </style>

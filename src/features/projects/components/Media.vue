@@ -40,8 +40,26 @@ watchEffect((onInvalidate) => {
 <template>
   <div class="project-media" ref="el">
     <div class="project-media-content" ref="content">
-      <img v-if="props.type === 'image'" :src="props.src" :alt="props.alt" loading="lazy" fetchpriority="high" class="project-media-image" ref="media" />
-      <video v-else :src="props.src" autoplay muted loop playsinline preload="metadata" class="project-media-video" ref="media">
+      <img
+        v-if="props.type === 'image'"
+        :src="props.src"
+        :alt="props.alt"
+        loading="lazy"
+        fetchpriority="high"
+        class="project-media-image"
+        ref="media"
+      />
+      <video
+        v-else
+        :src="props.src"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+        class="project-media-video"
+        ref="media"
+      >
         <source :src="props.src" type="video/mp4" />
       </video>
     </div>
@@ -62,8 +80,12 @@ watchEffect((onInvalidate) => {
   justify-self: center;
   position: relative;
   aspect-ratio: 16 / 9;
-  @include mixins.mq("md") { grid-column: 2 / 12; }
-  @include mixins.mq("lg") { grid-column: 3 / 11; }
+  @include mixins.mq("md") {
+    grid-column: 2 / 12;
+  }
+  @include mixins.mq("lg") {
+    grid-column: 3 / 11;
+  }
 
   &-content {
     overflow: hidden;
@@ -73,7 +95,8 @@ watchEffect((onInvalidate) => {
     height: 100%;
   }
 
-  &-image, &-video {
+  &-image,
+  &-video {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -86,15 +109,22 @@ watchEffect((onInvalidate) => {
     background-color: var(--color-background-400);
     padding: var(--space-xxs) var(--space-sm);
     border-radius: var(--radius-md) 0 0 0;
-    @include mixins.mq("md") { padding: var(--space-xxs) var(--space-sm); }
-    @include mixins.mq("lg") { padding: var(--space-xs) var(--space-md); border-radius: var(--radius-lg) 0 0 0; }
+    @include mixins.mq("md") {
+      padding: var(--space-xxs) var(--space-sm);
+    }
+    @include mixins.mq("lg") {
+      padding: var(--space-xs) var(--space-md);
+      border-radius: var(--radius-lg) 0 0 0;
+    }
 
     &-notch {
       position: absolute;
       color: var(--color-background-400);
       --icon-color: var(--color-background-400);
       width: var(--radius-md);
-      @include mixins.mq("md") { width: var(--radius-lg); }
+      @include mixins.mq("md") {
+        width: var(--radius-lg);
+      }
 
       &-left {
         left: 0;
@@ -112,7 +142,9 @@ watchEffect((onInvalidate) => {
     &-copy {
       font-size: var(--font-size-sm);
       font-weight: 700;
-      @include mixins.mq("md") { font-size: var(--font-size-md); }
+      @include mixins.mq("md") {
+        font-size: var(--font-size-md);
+      }
     }
   }
 }

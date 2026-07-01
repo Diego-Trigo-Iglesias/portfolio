@@ -13,11 +13,7 @@ const showAttribution = import.meta.env.VITE_SHOW_ATTRIBUTION !== "false";
         {{ t("original-concept-by") }}
       </p>
       <Clickable renderAs="div">
-        <Link
-          href="https://david-hckh.com"
-          class="footer-link children-unclickable"
-          external
-          data-cursor="circle-white"
+        <Link href="https://david-hckh.com" class="footer-link children-unclickable" external data-cursor="circle-white"
           >David Heckhoff</Link
         >
       </Clickable>

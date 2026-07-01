@@ -71,4 +71,3 @@ const { isTouch } = useAgent();
   overflow: hidden; /* ensure no scroll container */
 }
 </style>
-

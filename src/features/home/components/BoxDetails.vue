@@ -59,22 +59,41 @@ void wrapperRef;
   @include mixins.landscape {
     display: block;
     position: absolute;
-    padding-bottom: 3px; padding-right: var(--line-length);
-    width: 240px; max-width: calc(var(--svw) * 30);
+    padding-bottom: 3px;
+    padding-right: var(--line-length);
+    width: 240px;
+    max-width: calc(var(--svw) * 30);
     transform: translate(-100%, -50%);
   }
-  @include mixins.landscape-large { width: 240px; }
-  &::after, &::before { display: none; @include mixins.landscape { display: block; } }
+  @include mixins.landscape-large {
+    width: 240px;
+  }
+  &::after,
+  &::before {
+    display: none;
+    @include mixins.landscape {
+      display: block;
+    }
+  }
   &::after {
     content: "";
-    position: absolute; top: 50%; transform: translateY(-50%); right: 0;
-    width: 11px; height: 11px;
-    background-color: var(--color-cyan-400); border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0;
+    width: 11px;
+    height: 11px;
+    background-color: var(--color-cyan-400);
+    border-radius: 50%;
   }
   &::before {
     content: "";
-    position: absolute; top: 50%; transform: translateY(-50%); right: 0;
-    width: var(--line-length); height: 0;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0;
+    width: var(--line-length);
+    height: 0;
     border-bottom: var(--stroke-sm) solid var(--color-cyan-400);
   }
   &-content {
@@ -82,33 +101,52 @@ void wrapperRef;
     border-radius: var(--radius-md);
     background: linear-gradient(to bottom, var(--color-hologram-top) 0%, var(--color-hologram-bottom) 100%);
     gap: var(--space-xxs);
-    display: flex; flex-direction: row; justify-content: space-between;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     padding: var(--space-sm) var(--space-md);
     @include mixins.landscape {
-      flex-direction: column; justify-content: flex-start;
+      flex-direction: column;
+      justify-content: flex-start;
       padding: var(--space-xs) var(--space-sm);
     }
-    @include mixins.mq("md") { padding: var(--space-sm) var(--space-md); }
+    @include mixins.mq("md") {
+      padding: var(--space-sm) var(--space-md);
+    }
   }
   &-item {
-    display: flex; align-items: center; gap: var(--space-xs);
-    flex-direction: row; white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    flex-direction: row;
+    white-space: nowrap;
     height: var(--icon-size-sm);
   }
   &-icon {
-    width: var(--icon-size-xxs); transform: translateY(-1px);
+    width: var(--icon-size-xxs);
+    transform: translateY(-1px);
     --icon-color: var(--color-white-400);
-    @include mixins.mq("md") { width: var(--icon-size-xs); }
+    @include mixins.mq("md") {
+      width: var(--icon-size-xs);
+    }
   }
   &-title {
-    font-size: var(--font-size-title-xxs); font-weight: 700;
-    @include mixins.mq("md") { font-size: var(--font-size-title-sm); }
+    font-size: var(--font-size-title-xxs);
+    font-weight: 700;
+    @include mixins.mq("md") {
+      font-size: var(--font-size-title-sm);
+    }
   }
   &-items {
-    display: flex; font-size: var(--font-size-sm);
+    display: flex;
+    font-size: var(--font-size-sm);
     flex-direction: column;
-    @include mixins.mq("md") { font-size: var(--font-size-md); }
-    &-copy { flex: 0.5; }
+    @include mixins.mq("md") {
+      font-size: var(--font-size-md);
+    }
+    &-copy {
+      flex: 0.5;
+    }
   }
 }
 </style>

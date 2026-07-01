@@ -55,13 +55,7 @@ const handleClick = (event: MouseEvent) => {
     <slot></slot>
   </component>
 
-  <component
-    v-else
-    :is="props.renderAs || 'a'"
-    :href="resolvedTo"
-    @click="handleClick"
-    v-bind="attrs"
-  >
+  <component v-else :is="props.renderAs || 'a'" :href="resolvedTo" @click="handleClick" v-bind="attrs">
     <slot></slot>
   </component>
 </template>

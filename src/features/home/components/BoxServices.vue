@@ -30,18 +30,22 @@ const { wrapperRef, handleTimelineCreated } = useBoxAnimation(emit, {
 void wrapperRef;
 
 const SERVICES_EN = [
-  { name: "React & Next.js" }, { name: "Vue 3 & Angular" },
-  { name: "Java Spring Boot" }, { name: "Node.js & APIs REST" },
+  { name: "React & Next.js" },
+  { name: "Vue 3 & Angular" },
+  { name: "Java Spring Boot" },
+  { name: "Node.js & APIs REST" },
   { name: "Docker & Kubernetes" },
 ] as const satisfies { name: string }[];
 
 const SERVICES_ES = [
-  { name: "React & Next.js" }, { name: "Vue 3 & Angular" },
-  { name: "Java Spring Boot" }, { name: "Node.js y APIs REST" },
+  { name: "React & Next.js" },
+  { name: "Vue 3 & Angular" },
+  { name: "Java Spring Boot" },
+  { name: "Node.js y APIs REST" },
   { name: "Docker y Kubernetes" },
 ] as const satisfies { name: string }[];
 
-const services = computed(() => locale.value === "es" ? SERVICES_ES : SERVICES_EN);
+const services = computed(() => (locale.value === "es" ? SERVICES_ES : SERVICES_EN));
 </script>
 
 <template>
@@ -81,36 +85,63 @@ const services = computed(() => locale.value === "es" ? SERVICES_ES : SERVICES_E
   width: calc(100% - var(--space-outer) * 2);
   left: var(--space-outer);
   @include mixins.landscape {
-    width: 480px; max-width: calc(var(--svw) * 37);
+    width: 480px;
+    max-width: calc(var(--svw) * 37);
     padding-left: var(--line-length);
-    position: relative; left: 0; bottom: 0;
+    position: relative;
+    left: 0;
+    bottom: 0;
     padding-top: 3px;
     transform: translate(0, -50%);
   }
-  @include mixins.landscape-large { width: 380px; max-width: calc(var(--svw) * 36); }
-  &::after, &::before { display: none; @include mixins.landscape { display: block; } }
+  @include mixins.landscape-large {
+    width: 380px;
+    max-width: calc(var(--svw) * 36);
+  }
+  &::after,
+  &::before {
+    display: none;
+    @include mixins.landscape {
+      display: block;
+    }
+  }
   &::after {
     content: "";
-    position: absolute; top: 50%; transform: translateY(-50%); left: 0;
-    width: 11px; height: 11px;
-    background-color: var(--color-cyan-400); border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    width: 11px;
+    height: 11px;
+    background-color: var(--color-cyan-400);
+    border-radius: 50%;
   }
   &::before {
     content: "";
-    position: absolute; top: 50%; transform: translateY(-50%); left: 0;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
     height: 0;
     border-top: var(--stroke-sm) solid var(--color-cyan-400);
-    @include mixins.landscape { width: var(--line-length); }
+    @include mixins.landscape {
+      width: var(--line-length);
+    }
   }
   &-content {
     border: var(--stroke-sm) solid var(--color-cyan-400);
     border-radius: var(--radius-md);
     background: linear-gradient(to bottom, var(--color-hologram-top) 0%, var(--color-hologram-bottom) 100%);
-    display: flex; flex-direction: column;
+    display: flex;
+    flex-direction: column;
     gap: var(--space-sm);
     padding: var(--space-sm) var(--space-md);
-    @include mixins.landscape { padding: var(--space-xs) var(--space-sm); }
-    @include mixins.mq("md") { padding: var(--space-sm) var(--space-md); }
+    @include mixins.landscape {
+      padding: var(--space-xs) var(--space-sm);
+    }
+    @include mixins.mq("md") {
+      padding: var(--space-sm) var(--space-md);
+    }
   }
   &-list {
     display: flex;
@@ -123,22 +154,34 @@ const services = computed(() => locale.value === "es" ? SERVICES_ES : SERVICES_E
       position: relative;
       &::before {
         content: "";
-        position: absolute; left: 2px; top: 6px;
-        width: 4px; height: 4px;
-        background-color: var(--color-text-cyan-400); border-radius: 50%;
+        position: absolute;
+        left: 2px;
+        top: 6px;
+        width: 4px;
+        height: 4px;
+        background-color: var(--color-text-cyan-400);
+        border-radius: 50%;
       }
       &-name {
         font-size: var(--font-size-md);
-        @include mixins.landscape { font-size: var(--font-size-sm); }
-        @include mixins.landscape-large { font-size: var(--font-size-lg); }
+        @include mixins.landscape {
+          font-size: var(--font-size-sm);
+        }
+        @include mixins.landscape-large {
+          font-size: var(--font-size-lg);
+        }
       }
     }
   }
   &-title {
     font-size: var(--font-size-title-xs);
     font-weight: 700;
-    @include mixins.landscape { font-size: var(--font-size-title-xxs); }
-    @include mixins.landscape-large { font-size: var(--font-size-title-xs); }
+    @include mixins.landscape {
+      font-size: var(--font-size-title-xxs);
+    }
+    @include mixins.landscape-large {
+      font-size: var(--font-size-title-xs);
+    }
   }
 }
 </style>

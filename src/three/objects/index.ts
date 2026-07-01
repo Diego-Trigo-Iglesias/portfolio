@@ -33,17 +33,11 @@ const init = () => {
   // --- Letter D ---
   const dShape = new THREE.Group();
 
-  const dBar = new THREE.Mesh(
-    new THREE.BoxGeometry(0.3, 2, 0.3),
-    dMaterial,
-  );
+  const dBar = new THREE.Mesh(new THREE.BoxGeometry(0.3, 2, 0.3), dMaterial);
   dBar.position.x = -0.5;
   dShape.add(dBar);
 
-  const dCurve = new THREE.Mesh(
-    new THREE.TorusGeometry(0.5, 0.15, 16, 32, Math.PI),
-    dMaterial,
-  );
+  const dCurve = new THREE.Mesh(new THREE.TorusGeometry(0.5, 0.15, 16, 32, Math.PI), dMaterial);
   dCurve.rotation.z = Math.PI / 2;
   dCurve.position.x = 0.25;
   dShape.add(dCurve);
@@ -51,17 +45,11 @@ const init = () => {
   // --- Letter T ---
   const tShape = new THREE.Group();
 
-  const tTop = new THREE.Mesh(
-    new THREE.BoxGeometry(1.2, 0.3, 0.3),
-    tMaterial,
-  );
+  const tTop = new THREE.Mesh(new THREE.BoxGeometry(1.2, 0.3, 0.3), tMaterial);
   tTop.position.y = 0.85;
   tShape.add(tTop);
 
-  const tBar = new THREE.Mesh(
-    new THREE.BoxGeometry(0.3, 2, 0.3),
-    tMaterial,
-  );
+  const tBar = new THREE.Mesh(new THREE.BoxGeometry(0.3, 2, 0.3), tMaterial);
   tBar.position.x = 0.15;
   tShape.add(tBar);
 

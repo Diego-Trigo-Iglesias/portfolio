@@ -11,23 +11,23 @@ Available in Spanish and English.
 
 ## Stack
 
-| Technology | Usage |
-|------------|-------|
-| **Vue 3** + Composition API | Frontend framework |
-| **TypeScript** | Static typing (strict mode) |
-| **Vite** | Build tool |
-| **Three.js** | 3D scene (DT logo) |
-| **GSAP** + **Lenis** | Animations and smooth scroll |
-| **SCSS** | Styles with mixins |
+| Technology                  | Usage                        |
+| --------------------------- | ---------------------------- |
+| **Vue 3** + Composition API | Frontend framework           |
+| **TypeScript**              | Static typing (strict mode)  |
+| **Vite**                    | Build tool                   |
+| **Three.js**                | 3D scene (DT logo)           |
+| **GSAP** + **Lenis**        | Animations and smooth scroll |
+| **SCSS**                    | Styles with mixins           |
 
 ## Scripts
 
-| Command | Description |
-|---------|-------------|
-| `npm run dev` | Dev server on port 3000 |
-| `npm run build` | Type check + build to `dist/` |
-| `npm run preview` | Preview production build |
-| `npm run typecheck` | Type check only |
+| Command             | Description                   |
+| ------------------- | ----------------------------- |
+| `npm run dev`       | Dev server on port 3000       |
+| `npm run build`     | Type check + build to `dist/` |
+| `npm run preview`   | Preview production build      |
+| `npm run typecheck` | Type check only               |
 
 ## Project Structure
 

@@ -50,38 +50,44 @@ export function useBoxAnimation(
 
     matchMedia = gsap.matchMedia();
 
-    matchMedia.add(
-      getMatchMediaConditions(),
-      (context) => {
-        const { conditions } = context;
-        const { isMobile, isDesktop, isLandscape } = conditions as unknown as BoxAnimationConditions;
+    matchMedia.add(getMatchMediaConditions(), (context) => {
+      const { conditions } = context;
+      const { isMobile, isDesktop, isLandscape } = conditions as unknown as BoxAnimationConditions;
 
-        const tl = gsap.timeline({ paused: true });
+      const tl = gsap.timeline({ paused: true });
 
-        const shouldAnimateClip = animateOn === "desktop" ? !isMobile : isLandscape;
+      const shouldAnimateClip = animateOn === "desktop" ? !isMobile : isLandscape;
 
-        if (clipDirection && shouldAnimateClip) {
-          const fromClip = clipDirection === "left" ? "inset(0% 0% 0% 100%)" : "inset(0% 100% 0% 0%)";
-          tl.fromTo(wrapperEl, { clipPath: fromClip }, { clipPath: "inset(0% 0% 0% 0%)", duration: clipDuration, ease: "none" }, 0);
-        } else if (clipDirection) {
-          gsap.set(wrapperEl, { clipPath: "inset(0% 0% 0% 0%)" });
+      if (clipDirection && shouldAnimateClip) {
+        const fromClip = clipDirection === "left" ? "inset(0% 0% 0% 100%)" : "inset(0% 100% 0% 0%)";
+        tl.fromTo(
+          wrapperEl,
+          { clipPath: fromClip },
+          { clipPath: "inset(0% 0% 0% 0%)", duration: clipDuration, ease: "none" },
+          0,
+        );
+      } else if (clipDirection) {
+        gsap.set(wrapperEl, { clipPath: "inset(0% 0% 0% 0%)" });
+      }
+
+      additionalAnimations?.(tl, { isMobile, isDesktop, isLandscape });
+
+      if (alwaysAddTimelines || shouldAnimateClip) {
+        for (let i = 0; i < timelines.value.length; i++) {
+          const item = timelines.value[i];
+          if (!item) continue;
+          tl.add(() => {
+            item.timeline.restart(true);
+          }, item.delay + timelineDelayOffset);
         }
+      }
 
-        additionalAnimations?.(tl, { isMobile, isDesktop, isLandscape });
+      emit("timeline:created", tl);
 
-        if (alwaysAddTimelines || shouldAnimateClip) {
-          for (let i = 0; i < timelines.value.length; i++) {
-            const item = timelines.value[i];
-            if (!item) continue;
-            tl.add(() => { item.timeline.restart(true); }, item.delay + timelineDelayOffset);
-          }
-        }
-
-        emit("timeline:created", tl);
-
-        return () => { tl.kill(); };
-      },
-    );
+      return () => {
+        tl.kill();
+      };
+    });
 
     onInvalidate(() => {
       if (matchMedia) {

@@ -18,7 +18,7 @@ const classes = computed(() => ["tag", `tag-variant-${props.variant}`]);
 <style scoped lang="scss">
 .tag {
   border-radius: var(--radius-md);
-  padding: calc(var(--space-xxs) - var(--stroke-md)) calc(var(--space-sm  ) - var(--stroke-md));
+  padding: calc(var(--space-xxs) - var(--stroke-md)) calc(var(--space-sm) - var(--stroke-md));
   border: var(--stroke-md) solid transparent;
 
   &-copy {

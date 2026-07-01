@@ -10,19 +10,13 @@ const props = defineProps<{
 }>();
 
 const paragraphs = computed(() => {
-  return props.text
-    .split(/<br\s*\/?>\s*<br\s*\/?>/)
-    .map((p) => p.replace(/<br\s*\/?>/g, "\n"));
+  return props.text.split(/<br\s*\/?>\s*<br\s*\/?>/).map((p) => p.replace(/<br\s*\/?>/g, "\n"));
 });
 </script>
 
 <template>
   <span class="formatted-text">
-    <span
-      v-for="(para, pIdx) in paragraphs"
-      :key="pIdx"
-      class="formatted-text-para"
-    >{{ para }}</span>
+    <span v-for="(para, pIdx) in paragraphs" :key="pIdx" class="formatted-text-para">{{ para }}</span>
   </span>
 </template>
 

@@ -11,9 +11,9 @@ import CertificationList from "./CertificationList.vue";
 
 const isES = computed(() => locale.value === "es");
 
-const experiences = computed(() => isES.value ? experiencesES : experiencesEN);
-const educationList = computed(() => isES.value ? educationListES : educationListEN);
-const certifications = computed(() => isES.value ? certificationsES : certificationsEN);
+const experiences = computed(() => (isES.value ? experiencesES : experiencesEN));
+const educationList = computed(() => (isES.value ? educationListES : educationListEN));
+const certifications = computed(() => (isES.value ? certificationsES : certificationsEN));
 </script>
 
 <template>

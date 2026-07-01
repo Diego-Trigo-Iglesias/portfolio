@@ -108,25 +108,55 @@ const setupSectionsAnimation = ({
       const SERVICES_DELAY = 0.8;
 
       tl.fromTo(contentDetails, { opacity: 0 }, { opacity: 1, duration: 0.15, ease: "power1.out" }, DETAILS_DELAY);
-      tl.add(() => { tlDetails?.play(); }, DETAILS_DELAY);
+      tl.add(() => {
+        tlDetails?.play();
+      }, DETAILS_DELAY);
 
-      tl.fromTo(contentDescription, { opacity: 0 }, { opacity: 1, duration: 0.15, ease: "power1.out" }, DESCRIPTION_DELAY);
-      tl.add(() => { tlDescription?.play(); }, DESCRIPTION_DELAY);
+      tl.fromTo(
+        contentDescription,
+        { opacity: 0 },
+        { opacity: 1, duration: 0.15, ease: "power1.out" },
+        DESCRIPTION_DELAY,
+      );
+      tl.add(() => {
+        tlDescription?.play();
+      }, DESCRIPTION_DELAY);
 
       tl.fromTo(contentServices, { opacity: 0 }, { opacity: 1, duration: 0.15, ease: "power1.out" }, SERVICES_DELAY);
-      tl.add(() => { tlServices?.play(); }, SERVICES_DELAY);
+      tl.add(() => {
+        tlServices?.play();
+      }, SERVICES_DELAY);
     } else {
       const DESCRIPTION_DELAY = 0;
       const SERVICES_DELAY = 0.6;
 
-      tl.fromTo(contentDescription, { opacity: 0, y: "10vh" }, { opacity: 1, y: "0vh", duration: 0.15, ease: "power1.out" }, DESCRIPTION_DELAY);
+      tl.fromTo(
+        contentDescription,
+        { opacity: 0, y: "10vh" },
+        { opacity: 1, y: "0vh", duration: 0.15, ease: "power1.out" },
+        DESCRIPTION_DELAY,
+      );
       tl.to(contentDescription, { opacity: 0, y: "-10vh", duration: 0.15, ease: "power1.out" }, SERVICES_DELAY - 0.075);
-      tl.add(() => { tlDescription?.play(); }, DESCRIPTION_DELAY);
+      tl.add(() => {
+        tlDescription?.play();
+      }, DESCRIPTION_DELAY);
 
-      tl.fromTo(contentServices, { opacity: 0, y: "10vh" }, { opacity: 1, y: "0vh", duration: 0.15, ease: "power1.out" }, SERVICES_DELAY);
-      tl.add(() => { tlServices?.play(); }, SERVICES_DELAY);
+      tl.fromTo(
+        contentServices,
+        { opacity: 0, y: "10vh" },
+        { opacity: 1, y: "0vh", duration: 0.15, ease: "power1.out" },
+        SERVICES_DELAY,
+      );
+      tl.add(() => {
+        tlServices?.play();
+      }, SERVICES_DELAY);
 
-      tl.fromTo(contentProgressCount, { opacity: 0, y: "10vh" }, { opacity: 1, y: "0vh", duration: 0.15, ease: "power1.out" }, DESCRIPTION_DELAY);
+      tl.fromTo(
+        contentProgressCount,
+        { opacity: 0, y: "10vh" },
+        { opacity: 1, y: "0vh", duration: 0.15, ease: "power1.out" },
+        DESCRIPTION_DELAY,
+      );
     }
   });
 };
