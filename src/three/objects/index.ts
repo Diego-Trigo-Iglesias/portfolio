@@ -9,89 +9,69 @@ let ticker: (() => void) | null = null;
 const init = () => {
   logoGroup = new THREE.Group();
 
-  // --- Shared material config ---
-  const dMaterial = new THREE.MeshPhysicalMaterial({
+  // --- Clean, minimal material ---
+  const mat = new THREE.MeshPhysicalMaterial({
     color: 0x0ea5e9,
-    metalness: 0.8,
-    roughness: 0.15,
-    emissive: 0x0ea5e9,
-    emissiveIntensity: 0.15,
-    clearcoat: 0.3,
-    clearcoatRoughness: 0.25,
+    metalness: 0.4,
+    roughness: 0.3,
   });
 
-  const tMaterial = new THREE.MeshPhysicalMaterial({
-    color: 0x3b82f6,
-    metalness: 0.8,
-    roughness: 0.15,
-    emissive: 0x3b82f6,
-    emissiveIntensity: 0.15,
-    clearcoat: 0.3,
-    clearcoatRoughness: 0.25,
-  });
+  // --- Letter "D" ---
+  const dGroup = new THREE.Group();
 
-  // --- Letter D ---
-  const dShape = new THREE.Group();
+  // Vertical stem
+  const dStem = new THREE.Mesh(new THREE.BoxGeometry(0.25, 1.8, 0.25), mat);
+  dStem.position.x = -0.55;
+  dGroup.add(dStem);
 
-  const dBar = new THREE.Mesh(new THREE.BoxGeometry(0.3, 2, 0.3), dMaterial);
-  dBar.position.x = -0.5;
-  dShape.add(dBar);
-
-  const dCurve = new THREE.Mesh(new THREE.TorusGeometry(0.5, 0.15, 16, 32, Math.PI), dMaterial);
+  // Curve (half torus)
+  const dCurve = new THREE.Mesh(
+    new THREE.TorusGeometry(0.45, 0.12, 12, 24, Math.PI),
+    mat,
+  );
   dCurve.rotation.z = Math.PI / 2;
-  dCurve.position.x = 0.25;
-  dShape.add(dCurve);
+  dCurve.position.x = 0.15;
+  dGroup.add(dCurve);
 
-  // --- Letter T ---
-  const tShape = new THREE.Group();
+  // --- Letter "T" ---
+  const tGroup = new THREE.Group();
 
-  const tTop = new THREE.Mesh(new THREE.BoxGeometry(1.2, 0.3, 0.3), tMaterial);
-  tTop.position.y = 0.85;
-  tShape.add(tTop);
+  // Top bar
+  const tTop = new THREE.Mesh(new THREE.BoxGeometry(1.2, 0.25, 0.25), mat);
+  tTop.position.y = 0.75;
+  tGroup.add(tTop);
 
-  const tBar = new THREE.Mesh(new THREE.BoxGeometry(0.3, 2, 0.3), tMaterial);
-  tBar.position.x = 0.15;
-  tShape.add(tBar);
+  // Stem
+  const tStem = new THREE.Mesh(new THREE.BoxGeometry(0.25, 1.8, 0.25), mat);
+  tStem.position.x = 0.1;
+  tGroup.add(tStem);
 
-  // Position letters side by side
-  dShape.position.x = -1;
-  tShape.position.x = 1;
+  // --- Position letters ---
+  dGroup.position.x = -0.9;
+  tGroup.position.x = 0.9;
 
-  logoGroup.add(dShape);
-  logoGroup.add(tShape);
+  logoGroup.add(dGroup);
+  logoGroup.add(tGroup);
 
-  // --- Lighting ---
-  const glowLight = new THREE.PointLight(0x0ea5e9, 2, 6);
-  glowLight.position.set(0, 0, 2);
-  logoGroup.add(glowLight);
+  // --- Subtle lights ---
+  const ambient = new THREE.AmbientLight(0x404060, 0.6);
+  logoGroup.add(ambient);
 
-  // Subtle ambient fill
-  const ambientLight = new THREE.AmbientLight(0x404060, 0.5);
-  logoGroup.add(ambientLight);
-
-  // Key light for depth
-  const keyLight = new THREE.DirectionalLight(0xffffff, 0.8);
-  keyLight.position.set(5, 5, 5);
-  logoGroup.add(keyLight);
-
-  // Back light for rim effect
-  const backLight = new THREE.DirectionalLight(0x0ea5e9, 0.4);
-  backLight.position.set(-3, 0, -5);
-  logoGroup.add(backLight);
+  const key = new THREE.DirectionalLight(0xffffff, 1.2);
+  key.position.set(4, 6, 8);
+  logoGroup.add(key);
 
   scene.instance.add(logoGroup);
 
-  // --- Animation loop (smooth rotation + floating) ---
+  // --- Gentle animation ---
   let time = 0;
   ticker = () => {
-    time += 0.01;
+    time += 0.008;
     if (!logoGroup) return;
-
-    // Smooth Y-axis rotation
-    logoGroup.rotation.y += 0.005;
-
-    // Gentle floating (bobbing)
-    logoGroup.position.y = Math.sin(time) * 0.15;
+    // Slow Y rotation
+    logoGroup.rotation.y += 0.003;
+    // Subtle hover
+    logoGroup.position.y = Math.sin(time) * 0.1;
   };
   gsap.ticker.add(ticker);
 
