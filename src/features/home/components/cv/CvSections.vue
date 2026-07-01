@@ -32,16 +32,29 @@ const certifications = computed(() => (isES.value ? certificationsES : certifica
 .cv-sections {
   max-width: 800px;
   margin: 0 auto;
-  padding: 3rem 1.5rem;
+  padding: 2rem 1rem;
+}
+
+@media (min-width: 840px) {
+  .cv-sections {
+    padding: 3rem 1.5rem;
+  }
 }
 
 .cv-title {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: 700;
   color: var(--color-text-100);
-  margin: 0 0 1.5rem;
+  margin: 0 0 1rem;
   position: relative;
   letter-spacing: -0.01em;
+}
+
+@media (min-width: 840px) {
+  .cv-title {
+    font-size: 1.5rem;
+    margin: 0 0 1.5rem;
+  }
 }
 
 .cv-title::after {
@@ -55,6 +68,12 @@ const certifications = computed(() => (isES.value ? certificationsES : certifica
 }
 
 .cv-title-spaced {
-  margin-top: 3.5rem;
+  margin-top: 2.5rem;
+}
+
+@media (min-width: 840px) {
+  .cv-title-spaced {
+    margin-top: 3.5rem;
+  }
 }
 </style>

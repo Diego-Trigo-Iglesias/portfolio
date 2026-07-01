@@ -26,8 +26,13 @@ defineProps<{
 <style scoped lang="scss">
 .cert-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 1rem;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+
+  @include mixins.mq("sm") {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1rem;
+  }
 }
 
 .cert-card {

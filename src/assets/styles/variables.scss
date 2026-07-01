@@ -82,6 +82,20 @@
   --stroke-xl: 6px;
   --stroke-xxl: 8px;
 
+  /* --- MOBILE (< 840px) --- */
+  @media (max-width: 839px) {
+    --font-size-title-md: 32px;
+    --font-size-title-lg: 36px;
+    --font-size-title-xl: 48px;
+    --font-size-title-xxl: 56px;
+    --font-size-title-xxxl: 68px;
+
+    --space-lg: 20px;
+    --space-xl: 24px;
+    --space-xxl: 32px;
+    --space-xxxl: 40px;
+  }
+
   @media (min-width: 840px) {
     --radius-xxl: 48px;
     --height-header: 96px;

@@ -139,11 +139,12 @@ onMounted(loadPreviews);
     flex: 1;
     grid-column: 1 / span 12;
     display: grid;
-    gap: var(--space-lg);
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--space-md);
+    grid-template-columns: 1fr;
 
-    @include mixins.mq("md") {
-      grid-column: 1 / span 12;
+    @include mixins.mq("sm") {
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: var(--space-lg);
     }
 
     @include mixins.mq("lg") {
@@ -152,7 +153,7 @@ onMounted(loadPreviews);
     }
 
     @include mixins.mq("xl") {
-      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     }
   }
 }
