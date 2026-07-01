@@ -2,73 +2,84 @@
 
 [![Deploy](https://github.com/Diego-Trigo-Iglesias/portfolio/actions/workflows/deploy.yml/badge.svg)](https://github.com/Diego-Trigo-Iglesias/portfolio/actions/workflows/deploy.yml)
 
-Portfolio personal de **Diego Trigo Iglesias**, desarrollador Full-Stack de Moaña, Galicia.  
-Disponible en español e inglés.
+Personal portfolio of **Diego Trigo Iglesias**, Full-Stack Developer from Moana, Galicia.  
+Available in Spanish and English.
 
-🌐 **Web**: https://diegotrigoiglesias.github.io/portfolio/
+**Web**: https://diegotrigoiglesias.github.io/portfolio/
 
 ---
 
 ## Stack
 
-| Tecnología | Uso |
-|------------|-----|
-| **Vue 3** + Composition API | Framework principal |
-| **TypeScript** | Tipado estático |
+| Technology | Usage |
+|------------|-------|
+| **Vue 3** + Composition API | Frontend framework |
+| **TypeScript** | Static typing (strict mode) |
 | **Vite** | Build tool |
-| **Three.js** | Escena 3D (logo DT) |
-| **GSAP** + **Lenis** | Animaciones y scroll |
-| **SCSS** | Estilos con mixins |
+| **Three.js** | 3D scene (DT logo) |
+| **GSAP** + **Lenis** | Animations and smooth scroll |
+| **SCSS** | Styles with mixins |
 
 ## Scripts
 
-| Comando | Descripción |
+| Command | Description |
 |---------|-------------|
-| `npm run dev` | Servidor dev en puerto 3000 |
-| `npm run build` | Typecheck + build a `dist/` |
-| `npm run preview` | Vista previa del build |
-| `npm run typecheck` | Solo typecheck |
+| `npm run dev` | Dev server on port 3000 |
+| `npm run build` | Type check + build to `dist/` |
+| `npm run preview` | Preview production build |
+| `npm run typecheck` | Type check only |
 
-## Estructura
+## Project Structure
 
 ```
 src/
-├── components/       # Componentes reutilizables
+├── components/       # Reusable UI components
 ├── features/         # Feature modules (home, projects)
-│   ├── home/         # Secciones del homepage
-│   └── projects/     # Vista de proyecto individual
-├── animations/       # Sistema de animaciones y transiciones
-├── three/            # Escena 3D (core, objetos, utils)
-├── i18n/             # Traducciones ES/EN
-├── content/          # Datos de proyectos
-├── composables/      # Lógica compartida (hooks)
-└── assets/           # Estilos e imágenes
+│   ├── home/         # Homepage sections
+│   └── projects/     # Individual project view
+├── animations/       # Animation and transition system
+├── three/            # 3D scene (core, objects, utils)
+├── i18n/             # Internationalization (ES/EN)
+├── content/          # Project data and CV content
+├── composables/      # Shared composable logic
+└── assets/           # Global styles and images
 ```
 
-## Proyectos
+## Projects
 
-10 proyectos showcase con stack variado:
-- **Motor-RPG.net** — RPG Java + Spring Boot
-- **Coin Finder** — Criptomonedas React + Firebase
-- **Task Manager** — Vue + Pinia + IndexedDB
-- **IoT Sensor Simulator** — Node-RED + MQTT + ESP32
-- **React + K8s Demo** — React + Docker + K8s
-- **Mi Chatbot** — IA + NLP + chatbot interactivo
-- **Star Wars App** — Angular + SWAPI
-- **Fake Netflix** — Angular 19 + API REST
-- **CR Chapela Web** — React + Firebase
-- **Vue Slot Machine** — Vue + Vite + slot mechanics
+10 showcase projects across diverse tech stacks:
 
-## Atribución
+- **Motor-RPG.net** — Text-based RPG engine (Java, Spring Boot, .NET)
+- **Coin Finder** — Cryptocurrency tracker (React, Firebase, TypeScript)
+- **Task Manager** — Task management app (Vue 3, Pinia, IndexedDB)
+- **IoT Sensor Simulator** — Industrial IoT simulation (Node-RED, MQTT)
+- **React + K8s Demo** — Kubernetes-deployed React app (Docker, Minikube)
+- **Mi Chatbot** — AI-powered chatbot (Java Spring Boot, Vue, OpenAI)
+- **Star Wars App** — SWAPI consumer (React, REST API)
+- **Fake Netflix** — Netflix UI clone (Angular 19, Signals)
+- **CR Chapela Web** — Rowing club website (React, Firebase)
+- **Vue Slot Machine** — Slot machine game (Vue 3, CSS animations)
 
-Este proyecto está inspirado en el portfolio de **David Heckhoff** ([david-hckh.com](https://david-hckh.com)),  
-cuyo código original sirvió como base arquitectónica.  
-Se ha realizado una transformación sustancial: branding, contenido, escena 3D, proyectos, y más del 80% del código.
+## Key Features
 
-> Concepto original por [David Heckhoff](https://david-hckh.com)
+- Internationalization (ES/EN) with lazy-loaded namespaces
+- 3D interactive scene with Three.js (DT monogram logo)
+- Route-based code splitting (three.js, gsap, vue split into separate chunks)
+- Full TypeScript strict mode with zero errors
+- Accessibility: skip-to-content link, focus-visible styles, WCAG-compliant contrast
+- Smooth page transitions with GSAP and Lenis
+- CV sections with experience timeline, education, and certifications
 
-## Licencia
+## Attribution
 
-Proyecto privado. Código original © David Heckhoff.  
-Transformaciones y contenido original © Diego Trigo Iglesias.
-Uso personal y educativo.
+This project is inspired by the portfolio of **David Heckhoff** ([david-hckh.com](https://david-hckh.com)),  
+whose original code served as the architectural foundation.  
+A substantial transformation has been made: branding, content, 3D scene, projects, and over 80% of the codebase.
+
+Original concept by [David Heckhoff](https://david-hckh.com)
+
+## License
+
+Private project. Original code (c) David Heckhoff.  
+Transformations and original content (c) Diego Trigo Iglesias.  
+Personal and educational use.
