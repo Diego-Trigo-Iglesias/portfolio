@@ -1,7 +1,7 @@
 {
   "about": "About",
-  "about-intro": "Full-Stack Developer with over four years of experience in high-impact enterprise projects. Specialized in React, Next.js, Vue, Java Spring and Node.js. I build modern, scalable web applications with exceptional user experiences.",
-  "about-tagline": "I build modern, scalable web applications combining React, Vue and Next.js frontends with robust Java Spring and Node.js backends.",
+  "about-intro": "Full-Stack Developer with over four years of experience in high-impact enterprise projects. Specialized in Vue.js, React, TypeScript, Java Spring Boot and Node.js. I build modern, scalable web applications with exceptional user experiences.",
+  "about-tagline": "I build modern, scalable web applications combining Vue.js and React frontends with robust Java Spring Boot and Node.js backends.",
   "back-to-home": "Back to home",
   "contact": "Contact",
   "description": "Description",
