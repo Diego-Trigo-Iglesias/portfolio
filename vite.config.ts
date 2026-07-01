@@ -1,5 +1,6 @@
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
+import { fileURLToPath, URL } from "node:url";
 
 export default defineConfig({
   base: "/portfolio/",
@@ -11,6 +12,9 @@ export default defineConfig({
   },
   resolve: {
     extensions: [".js", ".jsx", ".ts", ".tsx", ".json"],
+    alias: {
+      "@": fileURLToPath(new URL("./src", import.meta.url)),
+    },
   },
   assetsInclude: ["**/*.svg", "**/*.png", "**/*.jpg", "**/*.webp"],
   css: {

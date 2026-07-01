@@ -5,6 +5,11 @@
     "types": ["vite/client", "three"],
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
 
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
