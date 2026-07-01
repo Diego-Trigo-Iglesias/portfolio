@@ -10,7 +10,6 @@ import EducationList from "./EducationList.vue";
 import CertificationList from "./CertificationList.vue";
 
 const isES = computed(() => locale.value === "es");
-
 const experiences = computed(() => (isES.value ? experiencesES : experiencesEN));
 const educationList = computed(() => (isES.value ? educationListES : educationListEN));
 const certifications = computed(() => (isES.value ? certificationsES : certificationsEN));
@@ -33,28 +32,29 @@ const certifications = computed(() => (isES.value ? certificationsES : certifica
 .cv-sections {
   max-width: 800px;
   margin: 0 auto;
-  padding: 2rem 1rem;
+  padding: 3rem 1.5rem;
 }
 
 .cv-title {
   font-size: 1.5rem;
   font-weight: 700;
-  color: var(--color-text-100, #f8fafc);
+  color: var(--color-text-100);
   margin: 0 0 1.5rem;
   position: relative;
+  letter-spacing: -0.01em;
 }
 
 .cv-title::after {
   content: "";
   display: block;
-  width: 60px;
+  width: 48px;
   height: 3px;
-  background: var(--color-primary-400, #0ea5e9);
+  background: var(--color-accent);
   margin-top: 0.5rem;
   border-radius: 2px;
 }
 
 .cv-title-spaced {
-  margin-top: 3rem;
+  margin-top: 3.5rem;
 }
 </style>

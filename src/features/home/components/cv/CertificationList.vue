@@ -10,7 +10,11 @@ defineProps<{
   <div class="cert-grid">
     <article v-for="(cert, index) in items" :key="index" class="cert-card">
       <div class="cert-header">
-        <span class="cert-icon">✓</span>
+        <svg class="cert-badge" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="8" r="6"/>
+          <path d="M15.5 21.8l-1.2-3.8h-4.6l-1.2 3.8"/>
+          <path d="M6.5 16l4.2-1.5"/>
+        </svg>
         <span class="cert-issuer">{{ cert.issuer }}</span>
       </div>
       <h3 class="cert-title">{{ cert.title }}</h3>
@@ -27,15 +31,16 @@ defineProps<{
 }
 
 .cert-card {
-  padding: 1.25rem;
-  background: var(--color-background-200, #1e293b);
-  border-radius: 8px;
-  border: 1px solid var(--color-background-300, #334155);
-  transition: border-color 0.2s;
+  padding: 1.25rem 1.5rem;
+  background: var(--color-background-200);
+  border-radius: 12px;
+  border: 1px solid var(--color-grayscale-400);
+  transition: border-color 0.2s, transform 0.2s;
 }
 
 .cert-card:hover {
-  border-color: var(--color-primary-400, #0ea5e9);
+  border-color: var(--color-accent);
+  transform: translateY(-1px);
 }
 
 .cert-header {
@@ -45,22 +50,15 @@ defineProps<{
   margin-bottom: 0.5rem;
 }
 
-.cert-icon {
-  width: 24px;
-  height: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--color-primary-600, #1e40af);
-  border-radius: 50%;
-  font-size: 0.75rem;
-  color: white;
+.cert-badge {
+  color: var(--color-accent);
+  flex-shrink: 0;
 }
 
 .cert-issuer {
   font-size: 0.8rem;
   font-weight: 600;
-  color: var(--color-primary-400, #0ea5e9);
+  color: var(--color-accent);
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
@@ -68,13 +66,13 @@ defineProps<{
 .cert-title {
   font-size: 0.95rem;
   font-weight: 500;
-  color: var(--color-text-100, #f8fafc);
+  color: var(--color-text-100);
   margin: 0.25rem 0;
   line-height: 1.4;
 }
 
 .cert-date {
   font-size: 0.8rem;
-  color: var(--color-text-300, #94a3b8);
+  color: var(--color-text-300);
 }
 </style>

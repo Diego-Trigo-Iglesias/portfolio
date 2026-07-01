@@ -40,7 +40,7 @@ defineProps<{
   top: 0;
   bottom: 0;
   width: 2px;
-  background: var(--color-primary-300, #3b82f6);
+  background: var(--color-accent-soft);
 }
 
 .timeline-item {
@@ -59,8 +59,8 @@ defineProps<{
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background: var(--color-primary-400, #0ea5e9);
-  border: 2px solid var(--color-background-200, #1e293b);
+  background: var(--color-accent);
+  border: 2px solid var(--color-surface-app);
   margin-left: -1.75rem;
   margin-top: 0.5rem;
   flex-shrink: 0;
@@ -73,20 +73,20 @@ defineProps<{
 .timeline-role {
   font-size: 1.1rem;
   font-weight: 600;
-  color: var(--color-text-100, #f8fafc);
+  color: var(--color-text-100);
   margin: 0;
 }
 
 .timeline-company {
   font-size: 0.95rem;
   font-weight: 500;
-  color: var(--color-primary-400, #0ea5e9);
+  color: var(--color-accent);
   margin: 0.25rem 0;
 }
 
 .timeline-period {
   font-size: 0.85rem;
-  color: var(--color-text-300, #94a3b8);
+  color: var(--color-text-300);
 }
 
 .timeline-description {
@@ -94,8 +94,8 @@ defineProps<{
   padding-left: 1.25rem;
   list-style: disc;
   font-size: 0.9rem;
-  color: var(--color-text-200, #cbd5e1);
-  line-height: 1.5;
+  color: var(--color-text-200);
+  line-height: 1.6;
 }
 
 .timeline-tech {
@@ -106,10 +106,12 @@ defineProps<{
 }
 
 .tech-tag {
-  padding: 0.2rem 0.6rem;
+  padding: 0.25rem 0.65rem;
   font-size: 0.75rem;
-  border-radius: 4px;
-  background: var(--color-background-300, #1e3a8a);
-  color: var(--color-primary-300, #93c5fd);
+  font-weight: 500;
+  border-radius: 6px;
+  background: var(--color-background-300);
+  color: var(--color-accent);
+  border: 1px solid var(--color-grayscale-400);
 }
 </style>
