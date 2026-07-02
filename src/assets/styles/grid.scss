@@ -1,0 +1,18 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  width: 100%;
+  gap: var(--space-md);
+  margin: 0 auto;
+  max-width: calc(var(--breakpoint-xxxl));
+  padding-left: var(--space-outer);
+  padding-right: var(--space-outer);
+
+  @media (max-width: 399px) {
+    gap: var(--space-sm);
+  }
+
+  @media (min-width: 840px) {
+    gap: var(--space-xl);
+  }
+}

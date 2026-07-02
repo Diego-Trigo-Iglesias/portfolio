@@ -1,0 +1,83 @@
+:root {
+  /* Base pastel palette */
+  --color-pink: #f27e98;
+  --color-coral: #fd998e;
+  --color-peach: #ffc9a7;
+  --color-cream: #fff7d2;
+  --color-warm-white: #ffffef;
+
+  /* Dark tones for text */
+  --color-darkest: #1c1d21;
+  --color-dark: #2d2e33;
+  --color-medium: #5a5c63;
+  --color-soft: #8e9096;
+
+  /* Accent shades */
+  --color-accent-dark: #d4677e;
+  --color-accent: var(--color-pink);
+  --color-accent-light: var(--color-coral);
+  --color-accent-soft: var(--color-peach);
+
+  /* Surface / background */
+  --color-surface-card: var(--color-cream);
+  --color-surface-hover: #fff0e0;
+  --color-surface-app: var(--color-warm-white);
+  --color-surface-alt: #fff3e0;
+
+  /* --- TEXT --- */
+  --color-text-100: var(--color-darkest);
+  --color-text-200: var(--color-dark);
+  --color-text-300: var(--color-medium);
+  --color-text-400: var(--color-dark);
+
+  /* --- ACCENT (used by components) --- */
+  --color-primary-300: var(--color-accent-light);
+  --color-primary-400: var(--color-accent);
+  --color-primary-600: var(--color-accent-dark);
+
+  /* --- BACKGROUNDS (used by components) --- */
+  --color-background-200: var(--color-surface-card);
+  --color-background-300: var(--color-surface-alt);
+  --color-background-400: var(--color-surface-app);
+
+  /* --- ACCENT TEXT --- */
+  --color-accent-400: var(--color-accent);
+  --color-accent-text-400: var(--color-warm-white);
+
+  /* --- GRAYSCALE --- */
+  --color-grayscale-500: var(--color-soft);
+  --color-grayscale-400: var(--color-cream);
+
+  /* --- BEIGE (3D scene compat) --- */
+  --color-beige-700: var(--color-darkest);
+  --color-beige-600: var(--color-dark);
+  --color-beige-500: var(--color-medium);
+  --color-beige-400: var(--color-cream);
+
+  /* --- ORANGE → coral --- */
+  --color-orange-400: var(--color-coral);
+
+  /* --- WHITE --- */
+  --color-white-400: #ffffff;
+
+  /* --- CYAN → accent mapping --- */
+  --color-cyan-500: var(--color-accent);
+  --color-cyan-400: var(--color-accent-light);
+  --color-text-cyan-400: #fff5f0;
+  --color-text-cyan-300: var(--color-peach);
+
+  /* --- DARK BLUE → accent mapping --- */
+  --color-dark-blue-600: var(--color-accent-dark);
+  --color-dark-blue-500: var(--color-accent);
+  --color-dark-blue-400: var(--color-accent);
+
+  /* --- HOLOGRAM (box hologram effect) --- */
+  --color-hologram-top: var(--color-accent);
+  --color-hologram-bottom: rgba(242, 126, 152, 0.4);
+
+  /* --- MISC --- */
+  --color-dark: var(--color-darkest);
+  --color-gray-500: var(--color-soft);
+  --color-gray-400: var(--color-peach);
+  --color-black-400: var(--color-darkest);
+}

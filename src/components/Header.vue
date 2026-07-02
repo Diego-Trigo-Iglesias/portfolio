@@ -1,0 +1,160 @@
+<script setup lang="ts">
+import Button from "./Button.vue";
+import Logo from "./Logo.vue";
+import { t } from "../i18n/utils/translate";
+import { projectId } from "../composables/useRouteObserver";
+import { social } from "../content/social";
+import ButtonRound from "./ButtonRound.vue";
+import ArrowRight from "./icons/ArrowRight.vue";
+import { useHeaderNav } from "./header/useHeaderNav";
+const { scrolledPastHeroVisible, handleBackToTop, handleBackClick, classNames, getInTouchClassNames } = useHeaderNav();
+</script>
+<template>
+  <header :class="classNames">
+    <div class="header-left">
+      <ButtonRound
+        v-if="projectId !== null"
+        variant="accent"
+        @click="handleBackClick"
+        :aria-label="t('back-to-home')"
+        :class="{ 'header-back': true, 'header-back-isProjectPage': projectId !== null }"
+        data-cursor="circle-white"
+      >
+        <ArrowRight class="header-back-icon" />
+      </ButtonRound>
+    </div>
+    <div
+      :class="{
+        'header-logo': true,
+        'header-logo-isProjectPage': projectId !== null,
+        'header-logo-clickable': scrolledPastHeroVisible,
+        'children-unclickable': true,
+      }"
+      @click="handleBackToTop"
+      data-cursor="circle-white"
+    >
+      <Logo class="header-logo-image" />
+    </div>
+    <div class="header-right">
+      <Button
+        renderAs="a"
+        variant="accent"
+        :aria-label="t('get-in-touch')"
+        :href="social.find((item) => item.name === 'mail')?.url ?? ''"
+        external
+        :class="getInTouchClassNames"
+        data-cursor="circle-white"
+      >
+        {{ t("get-in-touch") }}
+      </Button>
+    </div>
+  </header>
+</template>
+<style scoped lang="scss">
+.header {
+  position: fixed;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  left: 50%;
+  transform: translateX(-50%);
+  width: var(--breakpoint-xxxl);
+  padding: 0 var(--space-outer);
+  max-width: 100%;
+  z-index: var(--z-index-header);
+  height: var(--height-header);
+  pointer-events: none;
+  --scrolled: 0;
+  box-sizing: border-box;
+  &-scrolled {
+    --scrolled: 1;
+  }
+  &-back {
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+    transition-delay: 0.1s;
+    pointer-events: auto;
+    &-icon {
+      width: 100%;
+      transform: rotate(180deg);
+    }
+    &-isProjectPage {
+      pointer-events: auto;
+      opacity: 1;
+    }
+  }
+  &-left {
+    position: absolute;
+    left: var(--space-outer);
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  &-get-in-touch {
+    width: fit-content;
+    &-isProjectPage {
+      opacity: 1 !important;
+    }
+  }
+  &-right {
+    position: absolute;
+    right: var(--space-outer);
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: auto;
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+
+    @media (max-width: 399px) {
+      right: calc(var(--space-outer) - 4px);
+    }
+  }
+  &-music-toggle {
+    display: flex;
+  }
+  &-dark {
+    color: var(--color-white-400);
+    --icon-color: var(--color-white-400);
+  }
+  &-get-in-touch {
+    display: none;
+    @include mixins.mq("md") {
+      display: flex;
+    }
+  }
+  &-logo {
+    cursor: pointer;
+    display: flex;
+    gap: var(--space-xs);
+    transition: color 0.2s ease-in-out;
+    opacity: var(--scrolled);
+    pointer-events: none;
+    &-clickable {
+      pointer-events: all;
+    }
+    @include mixins.mq("md") {
+      gap: var(--space-sm);
+    }
+    &-isProjectPage {
+      transition: opacity 0.2s ease-in-out;
+      pointer-events: none;
+      opacity: 0;
+    }
+    &-image {
+      width: 36px;
+      @include mixins.mq("md") {
+        width: 40px;
+      }
+    }
+    &-text {
+      font-weight: 900;
+      font-size: 18px;
+      @include mixins.mq("md") {
+        font-size: 20px;
+      }
+    }
+  }
+}
+</style>
