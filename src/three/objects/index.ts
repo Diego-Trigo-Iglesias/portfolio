@@ -65,6 +65,11 @@ function setupAvatar(group: THREE.Group) {
     }
   });
 
+  // ── Orientar avatar hacia la cámara ────────────────────────────────
+  // El modelo GLB mira hacia -Z por defecto; lo rotamos 180° en Y para
+  // que quede de frente al usuario (cámara situada en Z+).
+  avatar.rotation.y = Math.PI;
+
   group.add(avatar);
 
   // Animation — intro "wave" once, then settle into a looping "idle"
