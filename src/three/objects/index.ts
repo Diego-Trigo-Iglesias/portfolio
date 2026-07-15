@@ -109,7 +109,10 @@ const init = () => {
 
   clock.start();
   ticker = () => {
-    if (mixer) mixer.update(clock.getDelta());
+    if (mixer) {
+      const delta = Math.min(clock.getDelta(), 0.1); // Cap a 100ms para evitar saltos
+      mixer.update(delta);
+    }
   };
   gsap.ticker.add(ticker);
 

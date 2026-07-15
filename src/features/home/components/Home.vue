@@ -76,10 +76,11 @@ watch(projectVisible, (v) => renderer.setIsActive(!v), { immediate: true });
 
 <style scoped lang="scss">
 .three-canvas {
-  width: calc(var(--svw) * 100);
-  height: calc(var(--lvh) * 100);
-  max-height: calc(var(--lvh) * 100);
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   overflow: hidden;
 }
 .three-canvas-contact {
@@ -117,6 +118,7 @@ watch(projectVisible, (v) => renderer.setIsActive(!v), { immediate: true });
   visibility: hidden;
 }
 .intro-sticky {
+  position: relative;
   top: 0;
   left: 0;
   width: 100%;
@@ -124,8 +126,6 @@ watch(projectVisible, (v) => renderer.setIsActive(!v), { immediate: true });
   min-height: calc(var(--lvh) * 100);
   overflow: hidden;
   z-index: -1;
-  display: flex;
-  align-items: flex-end;
 }
 .intro-hero {
   position: absolute;
